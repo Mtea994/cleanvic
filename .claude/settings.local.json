@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:api.anthropic.com)",
+      "Bash(mv design/handoff-extracted/kleanvictoria-com-au design/handoff)",
+      "Bash(rmdir design/handoff-extracted)",
+      "Bash(gh repo *)",
+      "Bash(npm run *)",
+      "Bash(npx vitest *)",
+      "Bash(cd /d \"d:\\\\Imtinan\\\\Projects\\\\cleanvic\")",
+      "Bash(npx tsc *)",
+      "PowerShell(npx tsc --noEmit 2>&1 | Select-Object -First 50)",
+      "PowerShell(npx tsc --noEmit 2>&1 | Select-Object -First 20)"
+    ]
+  },
+  "allowedTools": [
+    "Bash(C:/Users/Lab_engineer/.claude/plugins/cache/claude-plugins-official/ralph-loop/1.0.0/scripts/setup-ralph-loop.sh*)"
+  ]
+}

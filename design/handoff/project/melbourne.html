@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cleaning Services Melbourne | KleanVictoria — Same-Day Available</title>
+  <meta name="description" content="Professional cleaning services in Melbourne. Carpet, house, commercial, window cleaning and more. Same-day bookings. Fully insured. Serving all Melbourne suburbs." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="shared.css" />
+  <style>
+    /* ── LOCATION HERO ── */
+    .loc-hero {
+      background: var(--navy);
+      padding: 80px 5vw;
+      position: relative; overflow: hidden;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+    }
+    .loc-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 80% 50%, rgba(78,146,218,0.12), transparent 70%);
+    }
+    .loc-hero::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+      background-size: 28px 28px;
+    }
+    .loc-hero-text { position: relative; z-index: 2; }
+    .loc-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(78,146,218,0.15); border: 1px solid rgba(78,146,218,0.3);
+      color: var(--teal); font-size: 13px; font-weight: 700;
+      padding: 6px 14px; border-radius: 100px; margin-bottom: 20px;
+    }
+    .loc-hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      color: #fff; font-weight: 700; line-height: 1.2; margin-bottom: 18px;
+    }
+    .loc-hero h1 em { font-style: normal; color: var(--teal); }
+    .loc-hero-desc { color: rgba(255,255,255,0.72); font-size: 1.05rem; line-height: 1.7; margin-bottom: 32px; max-width: 500px; }
+    .loc-hero-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-bottom: 36px; }
+    .loc-stats {
+      display: flex; flex-wrap: wrap; gap: 24px;
+      padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .loc-stat-num { font-size: 1.8rem; font-weight: 800; color: #fff; }
+    .loc-stat-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 3px; }
+    .loc-hero-map {
+      position: relative; z-index: 2;
+      border-radius: 20px; overflow: hidden; height: 420px;
+    }
+    /* Suburb map visual */
+    .map-visual {
+      background: #0a1a2e; height: 100%; width: 100%;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .map-pin-wrap {
+      position: absolute;
+    }
+    .map-pin {
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--teal); box-shadow: 0 0 0 4px rgba(78,146,218,0.25);
+      animation: mapPulse 2s infinite;
+    }
+    @keyframes mapPulse { 0%,100%{box-shadow:0 0 0 4px rgba(78,146,218,0.25)} 50%{box-shadow:0 0 0 10px rgba(78,146,218,0.1)} }
+    .map-pin-label {
+      position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+      background: rgba(0,0,0,0.7); color: #fff; font-size: 10px; font-weight: 700;
+      padding: 3px 8px; border-radius: 4px; white-space: nowrap;
+    }
+
+    /* ── SUBURBS GRID ── */
+    .suburbs-section { background: var(--offwhite); }
+    .suburbs-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px;
+    }
+    .suburb-card {
+      background: var(--white); border: 1.5px solid var(--border);
+      border-radius: 10px; padding: 14px 16px;
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 14px; color: var(--navy);
+      transition: all 0.15s; cursor: pointer;
+    }
+    .suburb-card:hover { border-color: var(--teal); color: var(--teal); background: var(--teal-lt); transform: translateY(-2px); }
+    .suburb-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); flex-shrink: 0; }
+
+    /* ── SERVICES IN AREA ── */
+    .area-services-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+    }
+    .area-service-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px 24px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .area-service-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+    .area-service-icon {
+      width: 52px; height: 52px; background: var(--navy);
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      margin-bottom: 16px;
+    }
+    .area-service-card h3 { font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: 8px; }
+    .area-service-card p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 16px; }
+    .area-service-from { font-size: 13px; font-weight: 700; color: var(--teal); }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-section { background: var(--navy); }
+    .testimonials-section .section-title { color: #fff; }
+    .testimonials-section .section-desc { color: rgba(255,255,255,0.6); }
+    .testimonials-section .section-label { color: var(--teal); }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+    .testimonial-card {
+      background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius); padding: 28px;
+    }
+    .t-stars { color: var(--gold); font-size: 15px; margin-bottom: 12px; }
+    .t-text { color: rgba(255,255,255,0.82); font-size: 14px; line-height: 1.7; margin-bottom: 18px; font-style: italic; }
+    .t-author { display: flex; align-items: center; gap: 12px; }
+    .t-avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--teal); display: flex; align-items: center; justify-content: center; font-weight: 800; color: #fff; flex-shrink: 0; }
+    .t-name { font-size: 13px; font-weight: 700; color: #fff; }
+    .t-loc { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+
+    /* ── BIG CTA ── */
+    .big-cta {
+      background: linear-gradient(135deg, var(--navy) 0%, #0a2540 100%);
+      padding: 100px 5vw; text-align: center; position: relative; overflow: hidden;
+    }
+    .big-cta::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(78,146,218,0.15), transparent 70%);
+    }
+    .big-cta-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+    .big-cta h2 {
+      font-family: var(--font-head);
+      font-size: clamp(2rem, 4vw, 3rem);
+      color: #fff; font-weight: 700; margin-bottom: 16px; line-height: 1.2;
+    }
+    .big-cta h2 em { font-style: normal; color: var(--teal); }
+    .big-cta p { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 36px; }
+    .big-cta-actions { display: flex; flex-wrap: wrap; gap: 16px; justify-content: center; align-items: center; }
+
+    /* ── FAQ ── */
+    .faq-section { background: var(--offwhite); }
+    .faq-list { max-width: 780px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-q { display: flex; align-items: center; justify-content: space-between; padding: 22px 4px; cursor: pointer; font-size: 1rem; font-weight: 700; color: var(--navy); transition: color 0.15s; gap: 16px; background: none; border: none; width: 100%; text-align: left; font-family: var(--font-body); }
+    .faq-q:hover { color: var(--teal); }
+    .faq-q svg { flex-shrink: 0; transition: transform 0.25s; }
+    .faq-q.open svg { transform: rotate(45deg); }
+    .faq-a { font-size: 15px; color: var(--muted); line-height: 1.7; padding: 0 4px 22px; display: none; }
+    .faq-a.open { display: block; }
+
+    @media (max-width: 1024px) {
+      .loc-hero { grid-template-columns: 1fr; }
+      .loc-hero-map { display: none; }
+      .suburbs-grid { grid-template-columns: repeat(3, 1fr); }
+      .area-services-grid { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .suburbs-grid { grid-template-columns: 1fr 1fr; }
+      .area-services-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="announce">
+  <span>Melbourne:</span> Same-day cleaning available — Call <a href="tel:0390001234" style="color:var(--gold);text-decoration:underline;">03 9000 1234</a>
+</div>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <div class="logo-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2C6.03 2 2 6.03 2 11s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z" fill="none" stroke="#4e92da" stroke-width="1.8"/><path d="M7 11.5s1.2 2.5 4 2.5 4-2.5 4-2.5" stroke="#4e92da" stroke-width="1.8" stroke-linecap="round"/><path d="M8 9V8m6 1V8" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+    <div><div class="logo-wordmark">Clean<em>Victoria</em></div><div class="logo-sub">Victoria's #1 Cleaners</div></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#how-it-works">How It Works</a></li>
+    <li><a href="melbourne.html" class="active">Locations</a></li>
+    <li><a href="about-us.html">About Us</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="tel:0390001234" class="btn-phone"><svg width="15" height="15" viewBox="0 0 16 16" fill="none"><path d="M2 2h4l1.5 3.5-2 1.2C6.2 8.5 7.5 9.8 9.3 10.5l1.2-2L14 10v4c-6.6 0-12-5.4-12-12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>03 9000 1234</a>
+    <button class="btn-primary" onclick="openModal()">Book Now — Free Quote</button>
+  </div>
+  <button class="nav-hamburger" id="hamburger"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="navClose">✕</button>
+  <a href="index.html" onclick="closeMobileNav()">Home</a>
+  <a href="index.html#services" onclick="closeMobileNav()">Services</a>
+  <a href="about-us.html" onclick="closeMobileNav()">About Us</a>
+  <a href="contact.html" onclick="closeMobileNav()">Contact</a>
+  <button class="btn-primary" onclick="closeMobileNav();openModal();" style="font-size:1rem;padding:14px 28px;margin-top:8px;">Get Free Quote</button>
+</div>
+
+<!-- HERO -->
+<section class="loc-hero">
+  <div class="loc-hero-text">
+    <div class="breadcrumb" style="display:flex;align-items:center;gap:8px;font-size:13px;color:rgba(255,255,255,0.45);margin-bottom:20px;font-weight:600;">
+      <a href="index.html" style="color:rgba(255,255,255,0.45);">Home</a>
+      <span style="color:rgba(255,255,255,0.25);">›</span>
+      Locations
+      <span style="color:rgba(255,255,255,0.25);">›</span>
+      Melbourne
+    </div>
+    <div class="loc-badge">
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><circle cx="6" cy="5" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M6 1.5C3.5 1.5 1.5 3.5 1.5 6c0 3.5 4.5 7.5 4.5 7.5s4.5-4 4.5-7.5C10.5 3.5 8.5 1.5 6 1.5z" stroke="currentColor" stroke-width="1.4"/></svg>
+      Serving All Melbourne Suburbs
+    </div>
+    <h1>Professional Cleaning Services<br/>in <em>Melbourne, VIC</em></h1>
+    <p class="loc-hero-desc">Victoria's most trusted cleaning company, right on your doorstep. We serve every Melbourne suburb — from the CBD to the Mornington Peninsula. Same-day bookings available, 7 days a week.</p>
+    <div class="loc-hero-actions">
+      <button class="btn-primary btn-primary-lg" onclick="openModal()">
+        Book a Melbourne Clean
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M10 5l5 4-5 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <a href="tel:0390001234" class="btn-ghost-dark">📞 03 9000 1234</a>
+    </div>
+    <div class="loc-stats">
+      <div><div class="loc-stat-num">2,400+</div><div class="loc-stat-label">Melbourne Jobs Done</div></div>
+      <div><div class="loc-stat-num">48 hrs</div><div class="loc-stat-label">Avg Booking Response</div></div>
+      <div><div class="loc-stat-num">4.9★</div><div class="loc-stat-label">Melbourne Reviews</div></div>
+    </div>
+  </div>
+  <div class="loc-hero-map">
+    <div class="map-visual">
+      <!-- Stylised Melbourne suburb map dots -->
+      <svg width="100%" height="100%" viewBox="0 0 400 420" fill="none" style="position:absolute;inset:0;">
+        <circle cx="200" cy="210" r="180" fill="none" stroke="rgba(78,146,218,0.08)" stroke-width="1"/>
+        <circle cx="200" cy="210" r="120" fill="none" stroke="rgba(78,146,218,0.08)" stroke-width="1"/>
+        <circle cx="200" cy="210" r="60" fill="none" stroke="rgba(78,146,218,0.12)" stroke-width="1"/>
+        <!-- Road lines -->
+        <line x1="200" y1="30" x2="200" y2="390" stroke="rgba(78,146,218,0.1)" stroke-width="1"/>
+        <line x1="20" y1="210" x2="380" y2="210" stroke="rgba(78,146,218,0.1)" stroke-width="1"/>
+        <line x1="60" y1="80" x2="340" y2="340" stroke="rgba(78,146,218,0.07)" stroke-width="1"/>
+        <line x1="340" y1="80" x2="60" y2="340" stroke="rgba(78,146,218,0.07)" stroke-width="1"/>
+      </svg>
+      <!-- Suburb pins -->
+      <div class="map-pin-wrap" style="top:38%;left:47%"><div class="map-pin"></div><div class="map-pin-label">CBD</div></div>
+      <div class="map-pin-wrap" style="top:42%;left:55%"><div class="map-pin" style="width:8px;height:8px;background:rgba(78,146,218,0.6)"></div></div>
+      <div class="map-pin-wrap" style="top:34%;left:42%"><div class="map-pin" style="width:8px;height:8px;background:rgba(78,146,218,0.5)"></div></div>
+      <div class="map-pin-wrap" style="top:50%;left:35%"><div class="map-pin" style="width:8px;height:8px;background:rgba(78,146,218,0.5)"></div></div>
+      <div class="map-pin-wrap" style="top:28%;left:60%"><div class="map-pin" style="width:8px;height:8px;background:rgba(78,146,218,0.4)"></div></div>
+      <div class="map-pin-wrap" style="top:62%;left:58%"><div class="map-pin" style="width:8px;height:8px;background:rgba(78,146,218,0.4)"></div></div>
+      <div class="map-pin-wrap" style="top:20%;left:50%"><div class="map-pin" style="width:6px;height:6px;background:rgba(78,146,218,0.3)"></div></div>
+      <div class="map-pin-wrap" style="top:70%;left:45%"><div class="map-pin" style="width:6px;height:6px;background:rgba(78,146,218,0.3)"></div></div>
+      <div class="map-pin-wrap" style="top:44%;left:28%"><div class="map-pin" style="width:6px;height:6px;background:rgba(78,146,218,0.3)"></div></div>
+      <div class="photo-placeholder-label" style="bottom:16px;left:50%;transform:translateX(-50%);">Melbourne metro coverage map</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item"><div class="trust-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1.5l2.2 6h6L12.4 11l2.2 6.5L9 13.5l-5.6 4L5.6 11 .8 7.5h6L9 1.5z" fill="#4e92da"/></svg></div>4.9★ — 620+ Reviews</div>
+    <div class="trust-item"><div class="trust-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9l5 5 7-7" stroke="#4e92da" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Same-Day in Melbourne</div>
+    <div class="trust-item"><div class="trust-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6.5" stroke="#4e92da" stroke-width="1.5"/><path d="M9 5.5v3.5l2.5 2" stroke="#4e92da" stroke-width="1.5" stroke-linecap="round"/></svg></div>7 Days a Week</div>
+    <div class="trust-item"><div class="trust-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="3" y="7" width="12" height="8" rx="2" stroke="#4e92da" stroke-width="1.4"/><path d="M6 7V5a3 3 0 016 0v2" stroke="#4e92da" stroke-width="1.4" stroke-linecap="round"/></svg></div>Police-Checked Cleaners</div>
+    <div class="trust-item"><div class="trust-icon"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 1.5c-4.1 0-7.5 3.4-7.5 7.5 0 4.1 3.4 7.5 7.5 7.5s7.5-3.4 7.5-7.5-3.4-7.5-7.5-7.5z" stroke="#4e92da" stroke-width="1.4" fill="none"/><path d="M6 9l2 2 4-3" stroke="#4e92da" stroke-width="1.4" stroke-linecap="round"/></svg></div>$10M Insured</div>
+  </div>
+</div>
+
+<!-- SERVICES IN MELBOURNE -->
+<section>
+  <div class="section-head">
+    <div class="section-label">Melbourne Services</div>
+    <h2 class="section-title">Every Cleaning Service, Right Across Melbourne</h2>
+    <p class="section-desc">From Fitzroy to Frankston, we cover every suburb. Choose your service and we'll be there.</p>
+  </div>
+  <div class="area-services-grid">
+    <div class="area-service-card">
+      <div class="area-service-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="4" y="8" width="18" height="12" rx="4" stroke="#4e92da" stroke-width="1.8"/><path d="M7 13h12M7 16h9" stroke="#4e92da" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <h3>Carpet Cleaning Melbourne</h3>
+      <p>Steam cleaning, stain removal, pet odour treatment. Truck-mounted equipment for maximum results.</p>
+      <div class="area-service-from">From $80/room →</div>
+    </div>
+    <div class="area-service-card">
+      <div class="area-service-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M4 22V11L13 4l9 7v11H4z" stroke="#4e92da" stroke-width="1.8" stroke-linejoin="round"/><rect x="10" y="14" width="6" height="8" stroke="#4e92da" stroke-width="1.5"/></svg></div>
+      <h3>House Cleaning Melbourne</h3>
+      <p>Weekly, fortnightly, or one-off cleans. All products supplied. Available 7 days.</p>
+      <div class="area-service-from">From $130/clean →</div>
+    </div>
+    <div class="area-service-card">
+      <div class="area-service-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="4" y="4" width="18" height="18" rx="3" stroke="#4e92da" stroke-width="1.8"/><path d="M8 10h10M8 14h10M8 18h7" stroke="#4e92da" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+      <h3>Commercial Cleaning Melbourne</h3>
+      <p>Offices, retail, warehouses. After-hours service, dedicated account manager.</p>
+      <div class="area-service-from">Get custom quote →</div>
+    </div>
+    <div class="area-service-card">
+      <div class="area-service-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="4" y="4" width="18" height="18" rx="3" stroke="#4e92da" stroke-width="1.8"/><line x1="13" y1="4" x2="13" y2="22" stroke="#4e92da" stroke-width="1.5"/><line x1="4" y1="13" x2="22" y2="13" stroke="#4e92da" stroke-width="1.5"/></svg></div>
+      <h3>Window Cleaning Melbourne</h3>
+      <p>Streak-free windows inside and out. Residential, high-rise, and commercial.</p>
+      <div class="area-service-from">From $8/pane →</div>
+    </div>
+    <div class="area-service-card">
+      <div class="area-service-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="9" stroke="#4e92da" stroke-width="1.8"/><path d="M13 8v5l3.5 3" stroke="#4e92da" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+      <h3>Deep Cleaning Melbourne</h3>
+      <p>Top-to-bottom intensive clean. Behind appliances, inside ovens, grout scrubbing.</p>
+      <div class="area-service-from">From $280/home →</div>
+    </div>
+    <div class="area-service-card">
+      <div class="area-service-icon"><svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M5 19h16v4H5z" stroke="#4e92da" stroke-width="1.8"/><path d="M7 19V11a3 3 0 013-3h6a3 3 0 013 3v8" stroke="#4e92da" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+      <h3>Upholstery Cleaning Melbourne</h3>
+      <p>Sofas, armchairs, dining chairs. Safe for all fabrics including wool and velvet.</p>
+      <div class="area-service-from">From $120/piece →</div>
+    </div>
+  </div>
+</section>
+
+<!-- SUBURBS -->
+<section class="suburbs-section">
+  <div class="section-head">
+    <div class="section-label">Coverage Area</div>
+    <h2 class="section-title">Melbourne Suburbs We Serve</h2>
+    <p class="section-desc">We cover all Melbourne suburbs and surrounds — if you don't see yours, just call us.</p>
+  </div>
+  <div class="suburbs-grid">
+    <div class="suburb-card"><div class="suburb-dot"></div>Melbourne CBD</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Southbank</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>South Yarra</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>St Kilda</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Fitzroy</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Collingwood</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Richmond</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Prahran</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Carlton</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Brunswick</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Moonee Ponds</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Essendon</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Box Hill</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Doncaster</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Ringwood</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Croydon</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Frankston</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Mornington</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Dandenong</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Springvale</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Footscray</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Sunshine</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Werribee</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Point Cook</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Hoppers Crossing</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Taylors Lakes</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Sunbury</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Craigieburn</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Epping</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Thomastown</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>Greensborough</div>
+    <div class="suburb-card"><div class="suburb-dot"></div>+ All Suburbs</div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div class="section-head center">
+    <div class="section-label">Melbourne Reviews</div>
+    <h2 class="section-title">What Melbourne Locals Are Saying</h2>
+    <p class="section-desc">Real reviews from real Melbourne customers.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-text">"Used KleanVictoria for our office in Docklands. They came after 6pm, finished by midnight, and the place was immaculate for our staff Monday morning. Highly recommend."</div>
+      <div class="t-author"><div class="t-avatar">T</div><div><div class="t-name">Tom B.</div><div class="t-loc">Docklands, Melbourne</div></div></div>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-text">"Our carpet in our South Yarra apartment was destroyed by the previous tenant. KleanVictoria brought it back to life. Can't believe how good it looks — 5 stars!"</div>
+      <div class="t-author"><div class="t-avatar">N</div><div><div class="t-name">Natalie K.</div><div class="t-loc">South Yarra, Melbourne</div></div></div>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-text">"Same-day booking on a Thursday afternoon. The team arrived by 4pm and had our entire home cleaned by 7:30pm. Incredible service. Will absolutely use again."</div>
+      <div class="t-author"><div class="t-avatar">R</div><div><div class="t-name">Raj S.</div><div class="t-loc">Box Hill, Melbourne</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BIG CTA -->
+<div class="big-cta">
+  <div class="big-cta-inner">
+    <h2>Melbourne's <em>Most Trusted</em> Cleaning Team</h2>
+    <p>Book online in 60 seconds or call now for a free, no-obligation quote. Same-day available.</p>
+    <div class="big-cta-actions">
+      <button class="btn-primary" onclick="openModal()" style="font-size:18px;padding:18px 40px;border-radius:12px;">
+        Book a Melbourne Clean →
+      </button>
+      <a href="tel:0390001234" style="color:rgba(255,255,255,0.85);font-weight:700;font-size:1rem;display:flex;align-items:center;gap:8px;padding:16px 22px;border:2px solid rgba(255,255,255,0.25);border-radius:11px;">
+        📞 03 9000 1234
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="section-head center">
+    <div class="section-label">Melbourne FAQ</div>
+    <h2 class="section-title">Melbourne Cleaning Questions</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you cover all Melbourne suburbs?
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M10 5v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="faq-a">Yes — we cover the entire Melbourne metro area including inner city, eastern, western, northern and southern suburbs, as well as the Mornington Peninsula and Yarra Valley fringe. If you're unsure, just call us.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">How quickly can you come to Melbourne?
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M10 5v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="faq-a">Often same-day, especially for inner Melbourne suburbs. We have multiple teams based across the metro area. Book before midday for best same-day availability.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Do you clean apartments and high-rises in Melbourne?
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M10 5v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="faq-a">Absolutely. We regularly clean apartments throughout Melbourne CBD, Southbank, Docklands, and surrounding inner suburbs. We work with building management for access and can coordinate with your body corporate if needed.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">Can you provide a cleaning certificate for Melbourne properties?
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M10 5v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="faq-a">Yes — we issue detailed cleaning invoices and certificates for all our work, which are accepted by Melbourne real estate agencies and property managers for lease and settlement purposes.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2C6.03 2 2 6.03 2 11s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z" fill="none" stroke="#4e92da" stroke-width="1.8"/><path d="M7 11.5s1.2 2.5 4 2.5 4-2.5 4-2.5" stroke="#4e92da" stroke-width="1.8" stroke-linecap="round"/></svg></div>
+        <div><div class="logo-wordmark" style="color:#fff;">Clean<em>Victoria</em></div><div class="logo-sub">Victoria's #1 Cleaners</div></div>
+      </a>
+      <p>Professional cleaning services across all of Victoria since 2018. ABN 12 345 678 901.</p>
+      <div class="footer-contact">
+        <a href="tel:0390001234"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><path d="M2 2h4l1.5 3.5-2 1.2C6.2 8.5 7.5 9.8 9.3 10.5l1.2-2L14 10v4c-6.6 0-12-5.4-12-12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>03 9000 1234</a>
+        <a href="mailto:hello@kleanvictoria.com.au"><svg width="14" height="14" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="9" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M2 6l6 4 6-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>hello@kleanvictoria.com.au</a>
+      </div>
+    </div>
+    <div class="footer-col"><h4>Services</h4><ul class="footer-links"><li><a href="carpet-cleaning.html">Carpet Cleaning</a></li><li><a href="index.html#services">House Cleaning</a></li><li><a href="index.html#services">Commercial Cleaning</a></li><li><a href="index.html#services">Window Cleaning</a></li><li><a href="index.html#services">Deep Cleaning</a></li><li><a href="index.html#services">Upholstery</a></li></ul></div>
+    <div class="footer-col"><h4>Locations</h4><ul class="footer-links"><li><a href="melbourne.html">Melbourne</a></li><li><a href="melbourne.html">Geelong</a></li><li><a href="melbourne.html">Ballarat</a></li><li><a href="melbourne.html">Bendigo</a></li><li><a href="melbourne.html">All of Victoria</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul class="footer-links"><li><a href="about-us.html">About Us</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2026 KleanVictoria Pty Ltd · ABN 12 345 678 901</div>
+    <div class="footer-bottom-links"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Sitemap</a></div>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <a href="tel:0390001234" class="btn-phone">📞 Call</a>
+  <button class="btn-primary" onclick="openModal()">Book Melbourne Clean</button>
+</div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal()">✕</button>
+    <div id="modalForm">
+      <h2>Book a Melbourne Clean</h2>
+      <p class="modal-sub">Free quote — we call back within 30 minutes.</p>
+      <select class="modal-input"><option value="" disabled selected>Select a service *</option><option>Carpet Cleaning</option><option>House Cleaning</option><option>Commercial Cleaning</option><option>Window Cleaning</option><option>Deep Cleaning</option><option>Upholstery Cleaning</option><option>Mattress Cleaning</option><option>Tile &amp; Grout</option></select>
+      <div class="modal-row">
+        <input class="modal-input" type="text" placeholder="Full name *" />
+        <input class="modal-input" type="tel" placeholder="Phone number *" />
+      </div>
+      <div class="modal-row">
+        <input class="modal-input" type="text" placeholder="Melbourne suburb *" />
+        <select class="modal-input"><option value="" disabled selected>When?</option><option>Today</option><option>Tomorrow</option><option>This week</option><option>Flexible</option></select>
+      </div>
+      <button class="modal-btn" onclick="submitModal()">Get My Free Quote →</button>
+      <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:10px;">🔒 No spam. No hidden fees.</p>
+    </div>
+    <div id="modalSuccess" class="modal-success" style="display:none;">
+      <div class="check">✓</div>
+      <h3>Booking Request Received!</h3>
+      <p>We'll call you within 30 minutes. Urgent? <a href="tel:0390001234" style="color:var(--teal);font-weight:700;">03 9000 1234</a></p>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.getElementById('hamburger').addEventListener('click',()=>document.getElementById('mobileNav').classList.add('open'));
+  document.getElementById('navClose').addEventListener('click',closeMobileNav);
+  function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open');}
+  function openModal(){document.getElementById('modalOverlay').classList.add('open');document.body.style.overflow='hidden';}
+  function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';}
+  function submitModal(){document.getElementById('modalForm').style.display='none';document.getElementById('modalSuccess').style.display='block';}
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeMobileNav();}});
+  function toggleFaq(btn){const a=btn.nextElementSibling,open=btn.classList.contains('open');document.querySelectorAll('.faq-q.open').forEach(q=>{q.classList.remove('open');q.nextElementSibling.classList.remove('open');});if(!open){btn.classList.add('open');a.classList.add('open');}}
+  const io=new IntersectionObserver(e=>{e.forEach(el=>{if(el.isIntersecting){el.target.style.opacity='1';el.target.style.transform='translateY(0)';}});},{threshold:0.1});
+  document.querySelectorAll('.area-service-card,.suburb-card,.testimonial-card').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(20px)';el.style.transition='opacity 0.5s ease,transform 0.5s ease';io.observe(el);});
+</script>
+</body>
+</html>

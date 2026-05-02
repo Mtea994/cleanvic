@@ -1,0 +1,2057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clean Victoria – Professional Cleaning Services in Victoria, Australia</title>
+  <meta name="description" content="Victoria's most trusted cleaning company. Carpet, house, commercial, window, deep cleaning and more. Same-day bookings. Fully insured. Serving Melbourne, Geelong, Ballarat, Bendigo and all of Victoria." />
+  <meta name="keywords" content="cleaning services victoria, carpet cleaning melbourne, commercial cleaning victoria, house cleaning melbourne, window cleaning victoria, deep cleaning victoria, cleaners australia" />
+  <meta property="og:title" content="Clean Victoria – Professional Cleaning Services" />
+  <meta property="og:description" content="Victoria's most trusted cleaning company. Same-day bookings, fully insured, 100% satisfaction guaranteed." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Lora:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <style>
+    /* ─── TOKENS ─── */
+    :root {
+      --navy:    #0d1b2e;
+      --navy2:   #162540;
+      --teal:    #4e92da;
+      --teal-lt: #e4f0fb;
+      --gold:    oklch(74% 0.14 75);
+      --white:   #fafcfd;
+      --offwhite:#f0f5f7;
+      --text:    #1a2635;
+      --muted:   #5e7080;
+      --border:  #dce8ee;
+      --radius:  14px;
+      --shadow:  0 4px 28px rgba(13,27,46,0.10);
+      --shadow-lg: 0 12px 48px rgba(13,27,46,0.16);
+      --font-body: 'Plus Jakarta Sans', sans-serif;
+      --font-head: 'Lora', serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--font-body);
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      font-size: 17px;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+    button { cursor: pointer; font-family: var(--font-body); }
+
+    /* ─── ANNOUNCE BAR ─── */
+    .announce {
+      background: var(--navy);
+      color: #fff;
+      text-align: center;
+      padding: 10px 16px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+    }
+    .announce span { color: var(--gold); }
+
+    /* ─── NAV ─── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      background: rgba(250,252,253,0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 5vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      gap: 24px;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      flex-shrink: 0;
+    }
+    .logo-icon {
+      width: 40px; height: 40px;
+      background: var(--navy);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .logo-wordmark {
+      font-family: var(--font-head);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.1;
+    }
+    .logo-wordmark em {
+      font-style: normal;
+      color: var(--teal);
+    }
+    .logo-sub {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text);
+      padding: 8px 14px;
+      border-radius: 8px;
+      transition: background 0.15s, color 0.15s;
+    }
+    .nav-links a:hover { background: var(--offwhite); color: var(--teal); }
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-shrink: 0;
+    }
+    .btn-phone {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 15px; font-weight: 700;
+      color: var(--navy); padding: 8px 14px;
+      border-radius: 8px; border: 2px solid var(--navy);
+      transition: background 0.15s, color 0.15s;
+    }
+    .btn-phone:hover { background: var(--navy); color: #fff; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--teal);
+      color: #fff;
+      font-size: 15px; font-weight: 700;
+      padding: 10px 22px;
+      border-radius: 9px;
+      border: none;
+      transition: filter 0.15s, transform 0.1s;
+      white-space: nowrap;
+    }
+    .btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .btn-primary:active { transform: translateY(0); }
+    .nav-hamburger {
+      display: none;
+      background: none; border: none;
+      color: var(--navy); padding: 8px;
+      flex-direction: column; gap: 5px; cursor: pointer;
+    }
+    .nav-hamburger span {
+      display: block; width: 24px; height: 2.5px;
+      background: currentColor; border-radius: 2px;
+      transition: transform 0.2s;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      background: var(--navy);
+      min-height: 88vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 0;
+      padding: 80px 5vw 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 70% at 80% 50%, oklch(62% 0.18 195 / 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    /* subtle dot grid */
+    .hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+    .hero-text { position: relative; z-index: 2; }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--teal-lt);
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.07em; text-transform: uppercase;
+      padding: 6px 14px; border-radius: 100px;
+      margin-bottom: 24px;
+    }
+    .hero-badge span { width: 6px; height: 6px; background: var(--teal); border-radius: 50%; display: inline-block; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    .hero h1 {
+      font-family: var(--font-head);
+      font-size: clamp(2.2rem, 4vw, 3.6rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 20px;
+    }
+    .hero h1 em { font-style: normal; color: var(--teal); }
+    .hero-desc {
+      color: rgba(255,255,255,0.72);
+      font-size: 1.1rem;
+      max-width: 480px;
+      margin-bottom: 36px;
+      line-height: 1.7;
+    }
+    .hero-actions {
+      display: flex; flex-wrap: wrap; gap: 14px;
+      align-items: center;
+    }
+    .hero-actions .btn-primary {
+      font-size: 17px;
+      padding: 15px 30px;
+      border-radius: 11px;
+    }
+    .btn-ghost {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.85);
+      font-size: 16px; font-weight: 600;
+      padding: 14px 22px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 11px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+    .hero-stats {
+      display: flex; flex-wrap: wrap; gap: 28px;
+      margin-top: 44px;
+      padding-top: 36px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .hero-stat-num {
+      font-size: 1.8rem; font-weight: 800;
+      color: #fff; line-height: 1;
+    }
+    .hero-stat-label {
+      font-size: 13px; color: rgba(255,255,255,0.55);
+      font-weight: 500; margin-top: 4px;
+    }
+    /* Hero Visual */
+    .hero-visual {
+      position: relative; z-index: 2;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-card-stack {
+      position: relative; width: 100%; max-width: 420px; margin: 0 auto;
+    }
+    .hero-main-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 20px;
+      padding: 32px;
+      backdrop-filter: blur(12px);
+    }
+    .booking-funnel-title {
+      font-size: 1.1rem; font-weight: 800;
+      color: #fff; margin-bottom: 20px;
+    }
+    .funnel-steps {
+      display: flex; gap: 0;
+      background: rgba(255,255,255,0.06);
+      border-radius: 10px;
+      overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .funnel-step {
+      flex: 1; text-align: center;
+      padding: 10px 4px;
+      font-size: 12px; font-weight: 700;
+      color: rgba(255,255,255,0.45);
+      border-right: 1px solid rgba(255,255,255,0.08);
+      transition: all 0.2s;
+    }
+    .funnel-step:last-child { border-right: none; }
+    .funnel-step.active {
+      background: var(--teal);
+      color: #fff;
+    }
+    .funnel-step.done {
+      background: rgba(255,255,255,0.08);
+      color: rgba(255,255,255,0.6);
+    }
+    .funnel-step span { display: block; font-size: 16px; margin-bottom: 2px; }
+    .service-select-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .service-chip {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px;
+      padding: 10px 10px;
+      color: rgba(255,255,255,0.8);
+      font-size: 13px; font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+      display: flex; align-items: center; gap: 7px;
+      text-align: left;
+    }
+    .service-chip:hover { border-color: var(--teal); background: rgba(62,210,200,0.08); color: #fff; }
+    .service-chip.selected { border-color: var(--teal); background: rgba(62,210,200,0.15); color: #fff; }
+    .service-chip svg { flex-shrink: 0; }
+    .funnel-input {
+      width: 100%;
+      background: rgba(255,255,255,0.08);
+      border: 1.5px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      padding: 13px 16px;
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 15px;
+      margin-bottom: 12px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .funnel-input::placeholder { color: rgba(255,255,255,0.38); }
+    .funnel-input:focus { border-color: var(--teal); }
+    .funnel-input option { background: var(--navy2); }
+    .funnel-btn {
+      width: 100%;
+      background: var(--teal);
+      color: #fff;
+      font-size: 16px; font-weight: 700;
+      border: none;
+      border-radius: 10px;
+      padding: 15px;
+      cursor: pointer;
+      transition: filter 0.15s, transform 0.1s;
+      margin-top: 4px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .funnel-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .funnel-confirm {
+      text-align: center;
+      padding: 16px 0;
+    }
+    .funnel-confirm .checkmark {
+      width: 56px; height: 56px;
+      background: var(--teal);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 16px;
+      font-size: 26px;
+    }
+    .funnel-confirm h3 { color: #fff; font-size: 1.1rem; margin-bottom: 8px; }
+    .funnel-confirm p { color: rgba(255,255,255,0.6); font-size: 14px; }
+    .floating-badge {
+      position: absolute;
+      right: -16px; bottom: 24px;
+      background: var(--gold);
+      color: var(--navy);
+      font-size: 12px; font-weight: 800;
+      padding: 8px 14px;
+      border-radius: 100px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      white-space: nowrap;
+    }
+
+    /* ─── SECTION LAYOUT ─── */
+    section { padding: 80px 5vw; }
+    .section-label {
+      display: inline-block;
+      font-size: 12px; font-weight: 800; letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: var(--font-head);
+      font-size: clamp(1.7rem, 3vw, 2.5rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 14px;
+    }
+    .section-desc {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 560px;
+      line-height: 1.7;
+    }
+    .section-head { margin-bottom: 48px; }
+    .section-head.center { text-align: center; }
+    .section-head.center .section-desc { margin: 0 auto; }
+
+    /* ─── TRUST BAR ─── */
+    .trust-bar {
+      background: var(--offwhite);
+      padding: 24px 5vw;
+      border-bottom: 1px solid var(--border);
+    }
+    .trust-bar-inner {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 32px;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 14px; font-weight: 700;
+      color: var(--navy);
+    }
+    .trust-icon {
+      width: 36px; height: 36px;
+      background: var(--navy);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    .hiw-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .hiw-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      position: relative;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .hiw-card:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+    .hiw-num {
+      font-family: var(--font-head);
+      font-size: 3.5rem;
+      font-weight: 700;
+      color: var(--teal);
+      line-height: 1;
+      margin-bottom: 16px;
+      opacity: 0.18;
+      position: absolute;
+      top: 24px; right: 28px;
+    }
+    .hiw-icon {
+      width: 52px; height: 52px;
+      background: var(--navy);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .hiw-card h3 {
+      font-size: 1.1rem; font-weight: 800;
+      margin-bottom: 10px; color: var(--navy);
+    }
+    .hiw-card p { color: var(--muted); font-size: 15px; line-height: 1.65; }
+
+    /* ─── SERVICES ─── */
+    .services-section { background: var(--offwhite); }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      transition: box-shadow 0.2s, transform 0.2s;
+      cursor: pointer;
+    }
+    .service-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-3px); }
+    .service-card-img {
+      height: 160px;
+      background: var(--navy2);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card-img svg { opacity: 0.35; }
+    .service-card-img-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(13,27,46,0.7), transparent);
+      padding: 20px 16px 12px;
+      font-size: 12px; font-weight: 700;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.05em;
+      font-family: monospace;
+    }
+    .service-card-body { padding: 22px 22px 26px; }
+    .service-card-tag {
+      display: inline-block;
+      background: var(--teal-lt);
+      color: var(--teal);
+      font-size: 11px; font-weight: 800;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 3px 10px; border-radius: 100px;
+      margin-bottom: 10px;
+    }
+    .service-card h3 {
+      font-size: 1.05rem; font-weight: 800;
+      color: var(--navy); margin-bottom: 8px;
+    }
+    .service-card p { color: var(--muted); font-size: 14px; line-height: 1.6; margin-bottom: 16px; }
+    .service-card-cta {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 14px; font-weight: 700;
+      color: var(--teal);
+      transition: gap 0.15s;
+    }
+    .service-card:hover .service-card-cta { gap: 10px; }
+
+    /* ─── WHY US ─── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .why-list { display: flex; flex-direction: column; gap: 20px; }
+    .why-item {
+      display: flex; gap: 18px; align-items: flex-start;
+      padding: 20px 22px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--white);
+      transition: box-shadow 0.2s;
+    }
+    .why-item:hover { box-shadow: var(--shadow); }
+    .why-item-icon {
+      width: 48px; height: 48px; flex-shrink: 0;
+      background: var(--navy);
+      border-radius: 11px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .why-item h4 { font-size: 1rem; font-weight: 800; color: var(--navy); margin-bottom: 5px; }
+    .why-item p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .why-visual {
+      background: var(--navy);
+      border-radius: 20px;
+      padding: 40px;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .why-visual::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 20% 80%, oklch(62% 0.18 195 / 0.2), transparent 70%);
+    }
+    .why-visual-content { position: relative; z-index: 1; }
+    .why-rating {
+      display: flex; align-items: center; gap: 8px;
+      margin-bottom: 24px;
+    }
+    .stars { color: var(--gold); font-size: 22px; letter-spacing: 2px; }
+    .why-rating-text { font-weight: 700; font-size: 1rem; }
+    .why-rating-sub { font-size: 13px; color: rgba(255,255,255,0.55); }
+    .why-quote {
+      font-family: var(--font-head);
+      font-size: 1.15rem;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .why-quote-author {
+      font-size: 14px; font-weight: 700;
+      color: var(--teal-lt);
+    }
+    .why-metrics {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin-top: 32px;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .why-metric-num {
+      font-size: 1.9rem; font-weight: 800; color: #fff;
+      line-height: 1;
+    }
+    .why-metric-label { font-size: 12px; color: rgba(255,255,255,0.5); margin-top: 4px; font-weight: 500; }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-section { background: var(--navy); }
+    .testimonials-section .section-title { color: #fff; }
+    .testimonials-section .section-desc { color: rgba(255,255,255,0.6); }
+    .testimonials-section .section-label { color: var(--teal); }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 28px 26px;
+      transition: background 0.2s;
+    }
+    .testimonial-card:hover { background: rgba(255,255,255,0.08); }
+    .t-stars { color: var(--gold); font-size: 15px; margin-bottom: 14px; }
+    .t-text {
+      color: rgba(255,255,255,0.82);
+      font-size: 15px; line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+    .t-author {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .t-avatar {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--teal);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 800; font-size: 16px; color: #fff;
+      flex-shrink: 0;
+    }
+    .t-name { font-size: 14px; font-weight: 700; color: #fff; }
+    .t-loc { font-size: 12px; color: rgba(255,255,255,0.45); margin-top: 2px; }
+
+    /* ─── LOCATIONS ─── */
+    .locations-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 14px;
+    }
+    .location-card {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 16px;
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 14px;
+      color: var(--navy);
+      transition: all 0.15s;
+      cursor: pointer;
+    }
+    .location-card:hover {
+      border-color: var(--teal);
+      color: var(--teal);
+      background: var(--teal-lt);
+      transform: translateY(-2px);
+    }
+    .location-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+    }
+
+    /* ─── FAQ ─── */
+    .faq-section { background: var(--offwhite); }
+    .faq-list { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-q {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 22px 4px;
+      cursor: pointer;
+      font-size: 1.05rem; font-weight: 700; color: var(--navy);
+      transition: color 0.15s;
+      gap: 16px;
+      background: none; border: none; width: 100%; text-align: left;
+      font-family: var(--font-body);
+    }
+    .faq-q:hover { color: var(--teal); }
+    .faq-q svg { flex-shrink: 0; transition: transform 0.25s; }
+    .faq-q.open svg { transform: rotate(45deg); }
+    .faq-a {
+      font-size: 15px; color: var(--muted);
+      line-height: 1.7; padding: 0 4px 22px;
+      display: none;
+    }
+    .faq-a.open { display: block; }
+
+    /* ─── CTA BAND ─── */
+    .cta-band {
+      background: var(--teal);
+      padding: 60px 5vw;
+      display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; gap: 28px;
+    }
+    .cta-band h2 {
+      font-family: var(--font-head);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 700;
+      color: #fff;
+    }
+    .cta-band p { color: rgba(255,255,255,0.8); font-size: 1rem; margin-top: 6px; }
+    .btn-white {
+      background: #fff;
+      color: var(--teal);
+      font-size: 16px; font-weight: 800;
+      padding: 14px 28px;
+      border-radius: 10px;
+      border: none;
+      transition: transform 0.1s, box-shadow 0.15s;
+      white-space: nowrap;
+      cursor: pointer;
+      display: inline-flex; align-items: center; gap: 8px;
+    }
+    .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.15); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--navy);
+      color: rgba(255,255,255,0.6);
+      padding: 64px 5vw 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+    .footer-brand p {
+      font-size: 14px; line-height: 1.7;
+      margin-top: 16px; max-width: 280px;
+      color: rgba(255,255,255,0.5);
+    }
+    .footer-contact {
+      display: flex; flex-direction: column; gap: 10px;
+      margin-top: 20px;
+    }
+    .footer-contact a {
+      display: flex; align-items: center; gap: 8px;
+      color: rgba(255,255,255,0.7);
+      font-size: 14px; font-weight: 600;
+      transition: color 0.15s;
+    }
+    .footer-contact a:hover { color: var(--teal); }
+    .footer-col h4 {
+      color: #fff; font-size: 14px;
+      font-weight: 800; margin-bottom: 16px;
+      letter-spacing: 0.05em; text-transform: uppercase;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      font-size: 14px; color: rgba(255,255,255,0.55);
+      transition: color 0.15s;
+    }
+    .footer-links a:hover { color: var(--teal); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 24px;
+      display: flex; flex-wrap: wrap;
+      justify-content: space-between; align-items: center;
+      gap: 12px; font-size: 13px;
+    }
+    .footer-bottom-links {
+      display: flex; gap: 20px;
+    }
+    .footer-bottom-links a { color: rgba(255,255,255,0.45); transition: color 0.15s; }
+    .footer-bottom-links a:hover { color: #fff; }
+
+    /* ─── STICKY MOBILE CTA ─── */
+    .sticky-cta {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      z-index: 800;
+      background: var(--navy);
+      padding: 12px 16px;
+      gap: 10px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      align-items: center;
+    }
+    .sticky-cta .btn-primary { flex: 1; justify-content: center; font-size: 16px; padding: 13px; }
+    .sticky-cta .btn-phone { flex-shrink: 0; background: rgba(255,255,255,0.08); border-color: rgba(255,255,255,0.2); color: #fff; font-size: 15px; padding: 12px 16px; }
+    .sticky-cta .btn-phone:hover { background: rgba(255,255,255,0.15); }
+
+    /* ─── MOBILE NAV DRAWER ─── */
+    .mobile-nav {
+      display: none;
+      position: fixed; inset: 0; z-index: 950;
+      background: rgba(13,27,46,0.96);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      color: #fff; font-size: 1.4rem; font-weight: 700;
+      padding: 10px; border-radius: 10px;
+    }
+    .mobile-nav-close {
+      position: absolute; top: 20px; right: 20px;
+      background: none; border: none;
+      color: #fff; font-size: 2rem; cursor: pointer;
+    }
+
+    /* ─── BOOKING MODAL ─── */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(13,27,46,0.6);
+      backdrop-filter: blur(6px);
+      align-items: center; justify-content: center;
+      padding: 16px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 40px;
+      width: 100%; max-width: 520px;
+      position: relative;
+      max-height: 90vh; overflow-y: auto;
+      box-shadow: var(--shadow-lg);
+    }
+    .modal-close {
+      position: absolute; top: 16px; right: 16px;
+      background: var(--offwhite); border: none;
+      width: 36px; height: 36px; border-radius: 50%;
+      font-size: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); transition: background 0.15s;
+    }
+    .modal-close:hover { background: var(--border); }
+    .modal h2 {
+      font-family: var(--font-head);
+      font-size: 1.5rem; color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .modal p { color: var(--muted); font-size: 14px; margin-bottom: 28px; }
+    .modal-input {
+      width: 100%;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 13px 16px;
+      font-family: var(--font-body);
+      font-size: 15px; color: var(--text);
+      margin-bottom: 14px;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .modal-input:focus { border-color: var(--teal); }
+    .modal-input option { background: #fff; }
+    .modal-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .modal-btn {
+      width: 100%;
+      background: var(--navy);
+      color: #fff;
+      font-size: 16px; font-weight: 700;
+      border: none; border-radius: 11px;
+      padding: 15px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background 0.15s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .modal-btn:hover { background: var(--teal); }
+    .modal-success {
+      text-align: center; padding: 20px 0;
+    }
+    .modal-success .check {
+      width: 64px; height: 64px;
+      background: oklch(62% 0.18 195);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 28px; color: #fff;
+    }
+    .modal-success h3 { font-size: 1.3rem; color: var(--navy); margin-bottom: 8px; }
+    .modal-success p { color: var(--muted); }
+
+    /* ─── RESPONSIVE ─── */
+    /* ─── BEFORE/AFTER responsive ─── */
+    @media (max-width: 900px) {
+      .ba-item + .ba-item + .ba-item { display: none; }
+    }
+    @media (max-width: 640px) {
+      .ba-item + .ba-item { display: none; }
+    }
+    @media (max-width: 1024px) {
+      .hero { grid-template-columns: 1fr; gap: 56px; min-height: auto; padding: 60px 5vw; }
+      .hero-visual { display: none; }
+      .why-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-cta .btn-phone, .nav-cta .btn-primary { display: none; }
+      .nav-hamburger { display: flex; }
+      .hiw-grid { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .modal-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .sticky-cta { display: flex; }
+      body { padding-bottom: 72px; }
+    }
+    @media (max-width: 520px) {
+      .hero h1 { font-size: 2rem; }
+      .hero-stats { gap: 20px; }
+      .cta-band { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── ANNOUNCE BAR ─── -->
+<div class="announce">
+  🎉 <span>May Special:</span> 20% off Deep Cleaning this month — Same-Day Bookings Available &nbsp;·&nbsp;
+  <a href="tel:0390001234" style="color:var(--gold);text-decoration:underline;">Call 03 9000 1234</a>
+</div>
+
+<!-- ─── NAV ─── -->
+<nav>
+  <a href="#" class="nav-logo" aria-label="Clean Victoria Home">
+    <div class="logo-icon">
+      <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+        <path d="M11 2C6.03 2 2 6.03 2 11s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z" fill="none" stroke="#4dd9cc" stroke-width="1.8"/>
+        <path d="M7 11.5s1.2 2.5 4 2.5 4-2.5 4-2.5" stroke="#4dd9cc" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M8 9V8m6 1V8" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+        <path d="M11 2v2M11 18v2M2 11h2M18 11h2" stroke="#4dd9cc" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+    </div>
+    <div>
+      <div class="logo-wordmark">Clean<em>Victoria</em></div>
+      <div class="logo-sub">Victoria's #1 Cleaners</div>
+    </div>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#how-it-works">How It Works</a></li>
+    <li><a href="melbourne.html">Locations</a></li>
+    <li><a href="about-us.html">About Us</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+
+  <div class="nav-cta">
+    <a href="tel:0390001234" class="btn-phone">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 2h4l1.5 3.5-2 1.2C6.2 8.5 7.5 9.8 9.3 10.5l1.2-2L14 10v4c-6.6 0-12-5.4-12-12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      03 9000 1234
+    </a>
+    <button class="btn-primary" onclick="openModal()">
+      Get Free Quote
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+  </div>
+
+  <button class="nav-hamburger" id="hamburger" aria-label="Open menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ─── MOBILE NAV ─── -->
+<div class="mobile-nav" id="mobileNav">
+  <button class="mobile-nav-close" id="navClose" aria-label="Close menu">✕</button>
+  <a href="#services" onclick="closeMobileNav()">Services</a>
+  <a href="#how-it-works" onclick="closeMobileNav()">How It Works</a>
+  <a href="melbourne.html" onclick="closeMobileNav()">Locations</a>
+  <a href="about-us.html" onclick="closeMobileNav()">About Us</a>
+  <a href="contact.html" onclick="closeMobileNav()">Contact</a>
+  <button class="btn-primary" onclick="closeMobileNav();openModal();" style="font-size:1.1rem;padding:16px 32px;margin-top:8px;">Get Free Quote</button>
+  <a href="tel:0390001234" class="btn-ghost" style="font-size:1.1rem;padding:14px 28px;">📞 03 9000 1234</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">
+      <span></span> Victoria's Most Trusted Cleaners
+    </div>
+    <h1>
+      A <em>Spotlessly Clean</em><br/>
+      Home or Business,<br/>
+      Guaranteed.
+    </h1>
+    <p class="hero-desc">
+      Professional cleaning services across all of Victoria. Fully insured, background-checked cleaners with 100% satisfaction guarantee. Book online in under 60 seconds.
+    </p>
+    <div class="hero-actions">
+      <button class="btn-primary" onclick="openModal()" style="font-size:17px;padding:15px 30px;border-radius:11px;">
+        Book Your Clean
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <a href="tel:0390001234" class="btn-ghost">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2.5 2.5h4.5l1.8 4-2.4 1.4C7.7 9.8 8.2 10.3 9.1 11.1s1.3 1.4 3.1 2.6l1.4-2.4 4 1.8V17c-7.7 0-15-7.3-15-15z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+        Call Now — Free Quote
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="hero-stat-num">4,800+</div>
+        <div class="hero-stat-label">Happy Customers</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">Satisfaction Guarantee</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">Same-Day</div>
+        <div class="hero-stat-label">Bookings Available</div>
+      </div>
+      <div>
+        <div class="hero-stat-num">12+</div>
+        <div class="hero-stat-label">Services Offered</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero Booking Card -->
+  <div class="hero-visual">
+    <div class="hero-card-stack" id="heroFunnel">
+      <div class="hero-main-card">
+        <div class="booking-funnel-title">⚡ Book in 60 Seconds</div>
+        <div class="funnel-steps" id="funnelSteps">
+          <div class="funnel-step active" id="fstep1"><span>①</span>Service</div>
+          <div class="funnel-step" id="fstep2"><span>②</span>Details</div>
+          <div class="funnel-step" id="fstep3"><span>③</span>Confirm</div>
+        </div>
+        <!-- Step 1 -->
+        <div id="heroStep1">
+          <div style="color:rgba(255,255,255,0.65);font-size:13px;font-weight:600;margin-bottom:12px;">What do you need cleaned?</div>
+          <div class="service-select-grid" id="heroServiceGrid">
+            <div class="service-chip" onclick="selectHeroService(this,'Carpet Cleaning')">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="8" rx="2" stroke="#4dd9cc" stroke-width="1.4"/><path d="M5 7h6M5 9.5h4" stroke="#4dd9cc" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Carpet Cleaning
+            </div>
+            <div class="service-chip" onclick="selectHeroService(this,'Deep Clean')">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 13V7l6-4 6 4v6H2z" stroke="#4dd9cc" stroke-width="1.4" stroke-linejoin="round"/><rect x="6" y="9" width="4" height="4" stroke="#4dd9cc" stroke-width="1.2"/></svg>
+              Deep Clean
+            </div>
+            <div class="service-chip" onclick="selectHeroService(this,'House Cleaning')">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 14V8M13 14V8M1 8l7-6 7 6" stroke="#4dd9cc" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              House Cleaning
+            </div>
+            <div class="service-chip" onclick="selectHeroService(this,'Commercial')">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1" stroke="#4dd9cc" stroke-width="1.4"/><path d="M5 6h6M5 9h4M5 12h6" stroke="#4dd9cc" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Commercial
+            </div>
+            <div class="service-chip" onclick="selectHeroService(this,'Window Cleaning')">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="2" width="12" height="12" rx="1" stroke="#4dd9cc" stroke-width="1.4"/><path d="M8 2v12M2 8h12" stroke="#4dd9cc" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Window Cleaning
+            </div>
+            <div class="service-chip" onclick="selectHeroService(this,'Deep Clean')">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5.5" stroke="#4dd9cc" stroke-width="1.4"/><path d="M8 5v3l2 1.5" stroke="#4dd9cc" stroke-width="1.2" stroke-linecap="round"/></svg>
+              Deep Clean
+            </div>
+          </div>
+          <button class="funnel-btn" style="margin-top:16px;" onclick="heroStep(2)">Next Step →</button>
+        </div>
+        <!-- Step 2 -->
+        <div id="heroStep2" style="display:none;">
+          <div style="color:rgba(255,255,255,0.65);font-size:13px;font-weight:600;margin-bottom:12px;">Tell us about your space</div>
+          <input class="funnel-input" type="text" id="heroName" placeholder="Your name" />
+          <input class="funnel-input" type="tel" id="heroPhone" placeholder="Phone number" />
+          <input class="funnel-input" type="text" id="heroSuburb" placeholder="Suburb / postcode" />
+          <select class="funnel-input" id="heroDate">
+            <option value="" disabled selected>Preferred date</option>
+            <option>Today (Same-day)</option>
+            <option>Tomorrow</option>
+            <option>This week</option>
+            <option>Next week</option>
+            <option>Flexible</option>
+          </select>
+          <button class="funnel-btn" onclick="heroStep(3)">Confirm Booking →</button>
+        </div>
+        <!-- Step 3 -->
+        <div id="heroStep3" style="display:none;">
+          <div class="funnel-confirm">
+            <div class="checkmark">✓</div>
+            <h3>You're all booked in!</h3>
+            <p style="color:rgba(255,255,255,0.6);font-size:14px;margin-top:8px;">
+              Our team will call you within 30 minutes to confirm details and pricing.
+            </p>
+            <div style="margin-top:20px;padding:14px;background:rgba(255,255,255,0.07);border-radius:10px;font-size:13px;color:rgba(255,255,255,0.7);">
+              📞 Or call us right now:<br/>
+              <a href="tel:0390001234" style="color:var(--teal);font-weight:700;font-size:16px;">03 9000 1234</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="floating-badge">⭐ 4.9/5 · 620+ Reviews</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRUST BAR ─── -->
+<div class="trust-bar">
+  <div class="trust-bar-inner">
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2 5.5h5.5L13 11l1.8 5.5L10 13.5 5.2 16.5 7 11 2.5 7.5H8L10 2z" fill="#4dd9cc"/></svg>
+      </div>
+      100% Satisfaction Guarantee
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 2l2 6h4l-3.5 3 1.5 5L10 13l-4 3 1.5-5L4 8h4l2-6z" stroke="#4dd9cc" stroke-width="1.5" stroke-linejoin="round" fill="none"/></svg>
+      </div>
+      Fully Insured & Police-Checked
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="#4dd9cc" stroke-width="1.5"/><path d="M10 6v4l2.5 2.5" stroke="#4dd9cc" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      Same-Day Bookings Available
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M3 10l5 5 9-9" stroke="#4dd9cc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      Eco-Friendly Products Used
+    </div>
+    <div class="trust-item">
+      <div class="trust-icon">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><rect x="3" y="7" width="14" height="9" rx="2" stroke="#4dd9cc" stroke-width="1.5"/><path d="M7 7V5a3 3 0 016 0v2" stroke="#4dd9cc" stroke-width="1.5" stroke-linecap="round"/></svg>
+      </div>
+      Secure Online Booking
+    </div>
+  </div>
+</div>
+
+<!-- ─── HOW IT WORKS ─── -->
+<section id="how-it-works">
+  <div class="section-head center">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Book Your Clean in 3 Simple Steps</h2>
+    <p class="section-desc">No hassle, no hidden fees. Just pick a service, tell us your details, and we'll handle the rest.</p>
+  </div>
+  <div class="hiw-grid">
+    <div class="hiw-card">
+      <div class="hiw-num">01</div>
+      <div class="hiw-icon">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="4" y="4" width="18" height="18" rx="4" stroke="#4dd9cc" stroke-width="1.8"/><path d="M9 13h8M9 9h8M9 17h5" stroke="#4dd9cc" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </div>
+      <h3>Choose Your Service</h3>
+      <p>Select from our full range of cleaning services — carpet, bond, commercial, window, oven, upholstery, and more. Get an instant quote online.</p>
+    </div>
+    <div class="hiw-card">
+      <div class="hiw-num">02</div>
+      <div class="hiw-icon">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><rect x="4" y="6" width="18" height="16" rx="3" stroke="#4dd9cc" stroke-width="1.8"/><path d="M9 6V3M17 6V3M4 11h18" stroke="#4dd9cc" stroke-width="1.6" stroke-linecap="round"/></svg>
+      </div>
+      <h3>Pick a Date & Time</h3>
+      <p>Choose any date that suits you — including same-day and weekend slots. We work around your schedule, not the other way around.</p>
+    </div>
+    <div class="hiw-card">
+      <div class="hiw-num">03</div>
+      <div class="hiw-icon">
+        <svg width="26" height="26" viewBox="0 0 26 26" fill="none"><path d="M5 13l6 6 10-10" stroke="#4dd9cc" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>We Clean, You Relax</h3>
+      <p>Our fully insured, background-checked professionals arrive on time and leave your space sparkling clean — backed by our 100% satisfaction guarantee.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES ─── -->
+<section class="services-section" id="services">
+  <div class="section-head">
+    <div class="section-label">Our Services</div>
+    <h2 class="section-title">Every Cleaning Service Victoria Needs</h2>
+    <p class="section-desc">From routine house cleans to specialised carpet restoration — we've got every corner covered.</p>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card" onclick="openModalWith('Carpet Cleaning')">
+      <div class="service-card-img" style="background:#0f2235;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="15" y="25" width="50" height="30" rx="6" stroke="#4dd9cc" stroke-width="2"/><path d="M22 35h36M22 40h36M22 45h26" stroke="#4dd9cc" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/></svg>
+        <div class="service-card-img-label">carpet / rug photo</div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-tag">Most Popular</div>
+        <h3>Carpet Cleaning</h3>
+        <p>Deep steam cleaning that removes embedded dirt, allergens, pet hair and stains. Leaves carpets fresh and dry in hours.</p>
+        <div class="service-card-cta">Book Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+    </div>
+
+    <div class="service-card" onclick="openModalWith('Deep Cleaning')">
+      <div class="service-card-img" style="background:#0a1e30;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M18 55V32l22-15 22 15v23H18z" stroke="#4dd9cc" stroke-width="2" stroke-linejoin="round"/><rect x="32" y="38" width="16" height="17" stroke="#4dd9cc" stroke-width="1.6"/></svg>
+        <div class="service-card-img-label">clean empty house interior</div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-tag">Intensive</div>
+        <h3>Deep Cleaning</h3>
+        <p>Top-to-bottom intensive clean for homes that need extra attention — behind appliances, grout scrubbing, and all the hard-to-reach places.</p>
+        <div class="service-card-cta">Book Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+    </div>
+
+    <div class="service-card" onclick="openModalWith('House Cleaning')">
+      <div class="service-card-img" style="background:#0d2030;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M15 55V35L40 18l25 17v20H15z" stroke="#4dd9cc" stroke-width="2" stroke-linejoin="round"/><path d="M30 45h20M30 50h12" stroke="#4dd9cc" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/></svg>
+        <div class="service-card-img-label">clean modern living room</div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-tag">Regular &amp; One-off</div>
+        <h3>House Cleaning</h3>
+        <p>Regular weekly, fortnightly or one-off house cleans. We bring all products and equipment — you just enjoy coming home.</p>
+        <div class="service-card-cta">Book Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+    </div>
+
+    <div class="service-card" onclick="openModalWith('Commercial Cleaning')">
+      <div class="service-card-img" style="background:#111a28;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="15" y="15" width="50" height="50" rx="3" stroke="#4dd9cc" stroke-width="2"/><path d="M28 28h24M28 38h24M28 48h16" stroke="#4dd9cc" stroke-width="1.5" stroke-linecap="round" opacity="0.6"/><rect x="28" y="55" width="10" height="10" fill="#4dd9cc" opacity="0.15"/></svg>
+        <div class="service-card-img-label">modern office interior</div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-tag">Business</div>
+        <h3>Commercial Cleaning</h3>
+        <p>Offices, retail, warehouses, strata — tailored commercial cleaning plans with flexible scheduling and dedicated account management.</p>
+        <div class="service-card-cta">Book Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+    </div>
+
+    <div class="service-card" onclick="openModalWith('Window Cleaning')">
+      <div class="service-card-img" style="background:#0c1e2e;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="18" y="18" width="44" height="44" rx="4" stroke="#4dd9cc" stroke-width="2"/><path d="M40 18v44M18 40h44" stroke="#4dd9cc" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <div class="service-card-img-label">sparkling clean windows</div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-tag">Interior &amp; Exterior</div>
+        <h3>Window Cleaning</h3>
+        <p>Crystal-clear results inside and out. Streak-free window cleaning for homes, high-rises, storefronts, and commercial buildings.</p>
+        <div class="service-card-cta">Book Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+    </div>
+
+    <div class="service-card" onclick="openModalWith('Deep Cleaning')">
+      <div class="service-card-img" style="background:#12223a;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><circle cx="40" cy="40" r="22" stroke="#4dd9cc" stroke-width="2"/><path d="M40 26v14l8 6" stroke="#4dd9cc" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <div class="service-card-img-label">deep clean scrubbing</div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-tag">Intensive</div>
+        <h3>Deep Cleaning</h3>
+        <p>For homes that need extra attention — behind appliances, inside ovens, grout scrubbing, and all the hard-to-reach places.</p>
+        <div class="service-card-cta">Book Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+    </div>
+
+    <div class="service-card" onclick="openModalWith('Upholstery Cleaning')">
+      <div class="service-card-img" style="background:#0e1f31;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M18 52h44v6H18z" stroke="#4dd9cc" stroke-width="1.8"/><path d="M22 52V36a4 4 0 014-4h28a4 4 0 014 4v16" stroke="#4dd9cc" stroke-width="1.8" stroke-linejoin="round"/><path d="M18 42h44" stroke="#4dd9cc" stroke-width="1.5" stroke-linecap="round" opacity="0.5"/></svg>
+        <div class="service-card-img-label">sofa upholstery close-up</div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-tag">Sofa &amp; Fabric</div>
+        <h3>Upholstery Cleaning</h3>
+        <p>Gentle yet powerful cleaning for sofas, armchairs, dining chairs, and ottomans. Removes stains, odours, and bacteria safely.</p>
+        <div class="service-card-cta">Book Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+    </div>
+
+    <div class="service-card" onclick="openModalWith('Mattress Cleaning')">
+      <div class="service-card-img" style="background:#0b1d2e;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="14" y="34" width="52" height="18" rx="6" stroke="#4dd9cc" stroke-width="1.8"/><rect x="14" y="52" width="52" height="6" rx="2" stroke="#4dd9cc" stroke-width="1.6"/><path d="M22 38h36M22 44h28" stroke="#4dd9cc" stroke-width="1.3" stroke-linecap="round" opacity="0.5"/></svg>
+        <div class="service-card-img-label">mattress steam cleaning</div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-tag">Health &amp; Hygiene</div>
+        <h3>Mattress Cleaning</h3>
+        <p>UV sanitisation and steam cleaning eliminates dust mites, bacteria, and allergens for a healthier night's sleep.</p>
+        <div class="service-card-cta">Book Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+    </div>
+
+    <div class="service-card" onclick="openModalWith('Tile & Grout Cleaning')">
+      <div class="service-card-img" style="background:#101f2f;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="18" y="18" width="16" height="16" rx="2" stroke="#4dd9cc" stroke-width="1.6"/><rect x="38" y="18" width="16" height="16" rx="2" stroke="#4dd9cc" stroke-width="1.6"/><rect x="18" y="38" width="16" height="16" rx="2" stroke="#4dd9cc" stroke-width="1.6"/><rect x="38" y="38" width="16" height="16" rx="2" stroke="#4dd9cc" stroke-width="1.6"/></svg>
+        <div class="service-card-img-label">tile grout before/after</div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-tag">Bathroom &amp; Kitchen</div>
+        <h3>Tile &amp; Grout Cleaning</h3>
+        <p>High-pressure grout restoration and tile polishing. We bring yellowed, stained grout back to brilliant white.</p>
+        <div class="service-card-cta">Book Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+    </div>
+
+    <div class="service-card" onclick="openModalWith('Oven Cleaning')">
+      <div class="service-card-img" style="background:#0d1e2e;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="16" y="22" width="48" height="40" rx="4" stroke="#4dd9cc" stroke-width="1.8"/><rect x="24" y="30" width="32" height="22" rx="2" stroke="#4dd9cc" stroke-width="1.4"/><circle cx="26" cy="26" r="2" fill="#4dd9cc" opacity="0.5"/><circle cx="34" cy="26" r="2" fill="#4dd9cc" opacity="0.5"/></svg>
+        <div class="service-card-img-label">clean oven interior</div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-tag">Kitchen</div>
+        <h3>Oven &amp; Appliance Cleaning</h3>
+        <p>Chemical-free oven deep clean using non-caustic solutions. Sparkling results on ovens, rangehoods, dishwashers and more.</p>
+        <div class="service-card-cta">Book Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+    </div>
+
+    <div class="service-card" onclick="openModalWith('Rug Cleaning')">
+      <div class="service-card-img" style="background:#0f2135;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><rect x="20" y="28" width="40" height="24" rx="3" stroke="#4dd9cc" stroke-width="1.8"/><path d="M20 36h40M20 44h40M24 28v24M56 28v24" stroke="#4dd9cc" stroke-width="1.2" stroke-linecap="round" opacity="0.45"/></svg>
+        <div class="service-card-img-label">persian or wool rug</div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-tag">Delicate Fabrics</div>
+        <h3>Rug Cleaning</h3>
+        <p>Safe handling for all rug types — Persian, wool, synthetic, and antique rugs. Pickup &amp; delivery available.</p>
+        <div class="service-card-cta">Book Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+    </div>
+
+    <div class="service-card" onclick="openModalWith('Flood Damage Restoration')">
+      <div class="service-card-img" style="background:#0a1d2c;">
+        <svg width="80" height="80" viewBox="0 0 80 80" fill="none"><path d="M40 20c-5 8-14 14-14 24a14 14 0 0028 0C54 34 45 28 40 20z" stroke="#4dd9cc" stroke-width="1.8" stroke-linejoin="round"/><path d="M34 52a6 6 0 008-4" stroke="#4dd9cc" stroke-width="1.4" stroke-linecap="round" opacity="0.6"/></svg>
+        <div class="service-card-img-label">water damage restoration</div>
+      </div>
+      <div class="service-card-body">
+        <div class="service-card-tag">Emergency</div>
+        <h3>Flood Damage Restoration</h3>
+        <p>24/7 emergency water extraction, drying, and mould remediation. Fast response times to minimise damage to your property.</p>
+        <div class="service-card-cta">Book Now <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ─── WHY US ─── -->
+<section id="why-us">
+  <div class="why-grid">
+    <div>
+      <div class="section-label">Why Choose Us</div>
+      <h2 class="section-title">Victoria's Cleaning Company<br/>You Can Actually Trust</h2>
+      <p class="section-desc" style="margin-bottom:36px;">We know you have options. Here's what makes KleanVictoria different from every other cleaning company out there.</p>
+      <div class="why-list">
+        <div class="why-item">
+          <div class="why-item-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 7h7L16 13.5l2.5 7L12 17l-6.5 3.5 2.5-7L3 9h7L12 2z" fill="#4dd9cc"/></svg>
+          </div>
+          <div>
+            <h4>100% Satisfaction Guarantee</h4>
+            <p>If you're not satisfied, we return and re-clean for free. No questions asked. That's our promise to every single customer.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-item-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="#4dd9cc" stroke-width="1.8"/><path d="M8 12l3 3 5-5" stroke="#4dd9cc" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h4>Police-Checked Professionals</h4>
+            <p>Every cleaner on our team has undergone full police and background checks. Your home is in trustworthy hands, always.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-item-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="10" rx="2" stroke="#4dd9cc" stroke-width="1.8"/><path d="M7 11V7a5 5 0 0110 0v4" stroke="#4dd9cc" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <div>
+            <h4>$10M Public Liability Insurance</h4>
+            <p>Fully insured for your complete peace of mind. We are a licensed, compliant cleaning business registered in Victoria.</p>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-item-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 3C8 3 4 6.5 4 11c0 3 1.5 5.5 4 7v2h8v-2c2.5-1.5 4-4 4-7 0-4.5-4-8-8-8z" stroke="#4dd9cc" stroke-width="1.8" stroke-linejoin="round"/><path d="M9 11l2 2 4-3" stroke="#4dd9cc" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div>
+            <h4>Eco-Friendly Products Only</h4>
+            <p>Safe for children, pets, and the planet. We use hospital-grade, biodegradable cleaning solutions that leave no harmful residue.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual">
+      <div class="why-visual-content">
+        <div class="why-rating">
+          <div class="stars">★★★★★</div>
+          <div>
+            <div class="why-rating-text">4.9 / 5 Stars</div>
+            <div class="why-rating-sub">Based on 620+ verified reviews</div>
+          </div>
+        </div>
+        <div class="why-quote">
+          "The KleanVictoria team did an absolutely incredible job on our home deep clean. Every corner was spotless — things I hadn't seen clean in years. Couldn't recommend more highly!"
+        </div>
+        <div class="why-quote-author">— Sarah M., Richmond VIC</div>
+        <div class="why-metrics">
+          <div>
+            <div class="why-metric-num">4,800+</div>
+            <div class="why-metric-label">Customers Served</div>
+          </div>
+          <div>
+            <div class="why-metric-num">98%</div>
+            <div class="why-metric-label">Bond Success Rate</div>
+          </div>
+          <div>
+            <div class="why-metric-num">7 yrs</div>
+            <div class="why-metric-label">In Business</div>
+          </div>
+          <div>
+            <div class="why-metric-num">24/7</div>
+            <div class="why-metric-label">Emergency Response</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section class="testimonials-section">
+  <div class="section-head center">
+    <div class="section-label">Reviews</div>
+    <h2 class="section-title">What Victoria Homeowners Say</h2>
+    <p class="section-desc">Real reviews from real Victorians — not paid actors, not fake profiles.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-text">"Absolutely blown away. They cleaned our 3-bedroom house in 4 hours and it looked brand new. The oven alone was worth the price — I couldn't believe how clean it got."</div>
+      <div class="t-author">
+        <div class="t-avatar">J</div>
+        <div>
+          <div class="t-name">James K.</div>
+          <div class="t-loc">Southbank, Melbourne</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-text">"Used them for a full house clean and it was incredible — every room spotless in under 4 hours. The team were professional and friendly. Will definitely use again for my new place."</div>
+      <div class="t-author">
+        <div class="t-avatar">P</div>
+        <div>
+          <div class="t-name">Priya S.</div>
+          <div class="t-loc">Carlton, Melbourne</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-text">"I'm 74 and don't move around well. The team were so respectful, careful, and thorough. They even moved furniture back exactly where it was. Absolute legends — will book every month."</div>
+      <div class="t-author">
+        <div class="t-avatar">M</div>
+        <div>
+          <div class="t-name">Margaret H.</div>
+          <div class="t-loc">Ballarat, VIC</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-text">"Our office has never looked so clean. The commercial team came after hours, didn't disturb a thing, and left everything immaculate. Our staff were genuinely shocked Monday morning."</div>
+      <div class="t-author">
+        <div class="t-avatar">T</div>
+        <div>
+          <div class="t-name">Tom B.</div>
+          <div class="t-loc">Docklands, Melbourne</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-text">"Carpet cleaning on a 1980s rental carpet — I thought it was beyond saving. They brought it back to nearly new. The kids and dog can run on it again without me cringing!"</div>
+      <div class="t-author">
+        <div class="t-avatar">L</div>
+        <div>
+          <div class="t-name">Linda F.</div>
+          <div class="t-loc">Geelong, VIC</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="t-stars">★★★★★</div>
+      <div class="t-text">"Same-day booking, arrived on time, finished ahead of schedule, and the price was exactly what was quoted. No nasty surprises. This is how all service companies should operate."</div>
+      <div class="t-author">
+        <div class="t-avatar">A</div>
+        <div>
+          <div class="t-name">Aaron D.</div>
+          <div class="t-loc">Bendigo, VIC</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── BEFORE / AFTER ─── -->
+<section style="background:var(--navy);padding:80px 5vw;">
+  <div class="section-head center">
+    <div class="section-label" style="color:var(--teal);">Before &amp; After</div>
+    <h2 class="section-title" style="color:#fff;">See the Difference We Make</h2>
+    <p class="section-desc" style="color:rgba(255,255,255,0.6);margin:0 auto 48px;">Drag the slider on any image to reveal real results from KleanVictoria jobs across Victoria.</p>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
+
+    <!-- Slider 1: Carpet -->
+    <div class="ba-item">
+      <div class="ba-wrap" id="hba1" style="position:relative;border-radius:14px;overflow:hidden;height:300px;cursor:col-resize;user-select:none;">
+        <div style="position:absolute;inset:0;background:#1a3020;display:flex;align-items:center;justify-content:center;">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" style="opacity:0.2;"><rect x="15" y="25" width="50" height="30" rx="6" stroke="#4ade80" stroke-width="2"/><path d="M22 35h36M22 40h36M22 45h26" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.55);color:rgba(255,255,255,0.5);font-family:monospace;font-size:10px;padding:3px 8px;border-radius:4px;white-space:nowrap;">after — fresh clean carpet</div>
+        </div>
+        <div id="hba1-b" style="position:absolute;inset:0;overflow:hidden;width:50%;z-index:2;">
+          <div style="height:100%;width:600px;background:#2a1505;display:flex;align-items:center;justify-content:center;">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" style="opacity:0.15;"><rect x="15" y="25" width="50" height="30" rx="6" stroke="#c87" stroke-width="2"/></svg>
+            <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.55);color:rgba(255,255,255,0.5);font-family:monospace;font-size:10px;padding:3px 8px;border-radius:4px;white-space:nowrap;">before — stained carpet</div>
+          </div>
+        </div>
+        <div id="hba1-h" style="position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;z-index:3;display:flex;align-items:center;justify-content:center;">
+          <div style="width:40px;height:40px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">⟺</div>
+        </div>
+        <div style="position:absolute;bottom:14px;left:12px;z-index:4;background:rgba(0,0,0,0.65);color:#fff;font-size:11px;font-weight:800;letter-spacing:0.06em;padding:4px 10px;border-radius:100px;">BEFORE</div>
+        <div style="position:absolute;bottom:14px;right:12px;z-index:4;background:rgba(0,0,0,0.65);color:#fff;font-size:11px;font-weight:800;letter-spacing:0.06em;padding:4px 10px;border-radius:100px;">AFTER</div>
+      </div>
+      <div style="padding:16px 0 0;">
+        <h3 style="color:#fff;font-size:1rem;font-weight:800;margin-bottom:6px;">Carpet Cleaning — Pet Stain Removal</h3>
+        <p style="color:rgba(255,255,255,0.55);font-size:13px;line-height:1.6;">Lounge room carpet, Fitzroy. Years of pet stains removed in a single session.</p>
+      </div>
+    </div>
+
+    <!-- Slider 2: Commercial -->
+    <div class="ba-item">
+      <div class="ba-wrap" id="hba2" style="position:relative;border-radius:14px;overflow:hidden;height:300px;cursor:col-resize;user-select:none;">
+        <div style="position:absolute;inset:0;background:#162030;display:flex;align-items:center;justify-content:center;">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" style="opacity:0.2;"><rect x="15" y="15" width="50" height="50" rx="4" stroke="#4e92da" stroke-width="2"/><path d="M25 30h30M25 40h30M25 50h20" stroke="#4e92da" stroke-width="1.5" stroke-linecap="round"/></svg>
+          <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.55);color:rgba(255,255,255,0.5);font-family:monospace;font-size:10px;padding:3px 8px;border-radius:4px;white-space:nowrap;">after — spotless office</div>
+        </div>
+        <div id="hba2-b" style="position:absolute;inset:0;overflow:hidden;width:50%;z-index:2;">
+          <div style="height:100%;width:600px;background:#111525;display:flex;align-items:center;justify-content:center;">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" style="opacity:0.12;"><rect x="15" y="15" width="50" height="50" rx="4" stroke="#88a" stroke-width="2"/></svg>
+            <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.55);color:rgba(255,255,255,0.5);font-family:monospace;font-size:10px;padding:3px 8px;border-radius:4px;white-space:nowrap;">before — grimy office</div>
+          </div>
+        </div>
+        <div id="hba2-h" style="position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;z-index:3;display:flex;align-items:center;justify-content:center;">
+          <div style="width:40px;height:40px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">⟺</div>
+        </div>
+        <div style="position:absolute;bottom:14px;left:12px;z-index:4;background:rgba(0,0,0,0.65);color:#fff;font-size:11px;font-weight:800;letter-spacing:0.06em;padding:4px 10px;border-radius:100px;">BEFORE</div>
+        <div style="position:absolute;bottom:14px;right:12px;z-index:4;background:rgba(0,0,0,0.65);color:#fff;font-size:11px;font-weight:800;letter-spacing:0.06em;padding:4px 10px;border-radius:100px;">AFTER</div>
+      </div>
+      <div style="padding:16px 0 0;">
+        <h3 style="color:#fff;font-size:1rem;font-weight:800;margin-bottom:6px;">Commercial Clean — Melbourne CBD Office</h3>
+        <p style="color:rgba(255,255,255,0.55);font-size:13px;line-height:1.6;">400sqm office deep cleaned overnight. Ready for staff by 8am with zero disruption.</p>
+      </div>
+    </div>
+
+    <!-- Slider 3: Upholstery -->
+    <div class="ba-item">
+      <div class="ba-wrap" id="hba3" style="position:relative;border-radius:14px;overflow:hidden;height:300px;cursor:col-resize;user-select:none;">
+        <div style="position:absolute;inset:0;background:#1a1530;display:flex;align-items:center;justify-content:center;">
+          <svg width="80" height="80" viewBox="0 0 80 80" fill="none" style="opacity:0.2;"><path d="M18 55h44v6H18z" stroke="#4e92da" stroke-width="1.8"/><path d="M22 55V40a4 4 0 014-4h28a4 4 0 014 4v15" stroke="#4e92da" stroke-width="1.8" stroke-linejoin="round"/></svg>
+          <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.55);color:rgba(255,255,255,0.5);font-family:monospace;font-size:10px;padding:3px 8px;border-radius:4px;white-space:nowrap;">after — clean upholstery</div>
+        </div>
+        <div id="hba3-b" style="position:absolute;inset:0;overflow:hidden;width:50%;z-index:2;">
+          <div style="height:100%;width:600px;background:#1a100a;display:flex;align-items:center;justify-content:center;">
+            <svg width="80" height="80" viewBox="0 0 80 80" fill="none" style="opacity:0.12;"><path d="M18 55h44v6H18z" stroke="#c97" stroke-width="1.8"/></svg>
+            <div style="position:absolute;bottom:8px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.55);color:rgba(255,255,255,0.5);font-family:monospace;font-size:10px;padding:3px 8px;border-radius:4px;white-space:nowrap;">before — stained sofa</div>
+          </div>
+        </div>
+        <div id="hba3-h" style="position:absolute;top:0;bottom:0;left:50%;width:3px;background:#fff;z-index:3;display:flex;align-items:center;justify-content:center;">
+          <div style="width:40px;height:40px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.4);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;">⟺</div>
+        </div>
+        <div style="position:absolute;bottom:14px;left:12px;z-index:4;background:rgba(0,0,0,0.65);color:#fff;font-size:11px;font-weight:800;letter-spacing:0.06em;padding:4px 10px;border-radius:100px;">BEFORE</div>
+        <div style="position:absolute;bottom:14px;right:12px;z-index:4;background:rgba(0,0,0,0.65);color:#fff;font-size:11px;font-weight:800;letter-spacing:0.06em;padding:4px 10px;border-radius:100px;">AFTER</div>
+      </div>
+      <div style="padding:16px 0 0;">
+        <h3 style="color:#fff;font-size:1rem;font-weight:800;margin-bottom:6px;">Upholstery — Sofa Stain Removal</h3>
+        <p style="color:rgba(255,255,255,0.55);font-size:13px;line-height:1.6;">3-seater sofa, South Yarra. Wine &amp; food stains fully removed — fabric like new.</p>
+      </div>
+    </div>
+
+  </div>
+  <div style="text-align:center;margin-top:44px;">
+    <button class="btn-primary" onclick="openModal()" style="font-size:17px;padding:16px 36px;border-radius:11px;">Get Results Like These — Book Now →</button>
+  </div>
+</section>
+
+<!-- ─── LOCATIONS ─── -->
+<section id="locations">
+  <div class="section-head">
+    <div class="section-label">Service Areas</div>
+    <h2 class="section-title">Serving All of Victoria</h2>
+    <p class="section-desc">From Melbourne's CBD to regional Victoria — we cover it all. Can't see your suburb? Call us — we likely cover it.</p>
+  </div>
+  <div class="locations-grid">
+    <div class="location-card"><div class="location-dot"></div>Melbourne CBD</div>
+    <div class="location-card"><div class="location-dot"></div>Richmond</div>
+    <div class="location-card"><div class="location-dot"></div>St Kilda</div>
+    <div class="location-card"><div class="location-dot"></div>Fitzroy</div>
+    <div class="location-card"><div class="location-dot"></div>South Yarra</div>
+    <div class="location-card"><div class="location-dot"></div>Geelong</div>
+    <div class="location-card"><div class="location-dot"></div>Ballarat</div>
+    <div class="location-card"><div class="location-dot"></div>Bendigo</div>
+    <div class="location-card"><div class="location-dot"></div>Shepparton</div>
+    <div class="location-card"><div class="location-dot"></div>Mornington</div>
+    <div class="location-card"><div class="location-dot"></div>Frankston</div>
+    <div class="location-card"><div class="location-dot"></div>Dandenong</div>
+    <div class="location-card"><div class="location-dot"></div>Ringwood</div>
+    <div class="location-card"><div class="location-dot"></div>Box Hill</div>
+    <div class="location-card"><div class="location-dot"></div>Doncaster</div>
+    <div class="location-card"><div class="location-dot"></div>Moonee Ponds</div>
+    <div class="location-card"><div class="location-dot"></div>Footscray</div>
+    <div class="location-card"><div class="location-dot"></div>Werribee</div>
+    <div class="location-card"><div class="location-dot"></div>Point Cook</div>
+    <div class="location-card"><div class="location-dot"></div>Sunbury</div>
+    <div class="location-card"><div class="location-dot"></div>Traralgon</div>
+    <div class="location-card"><div class="location-dot"></div>Warrnambool</div>
+    <div class="location-card"><div class="location-dot"></div>Horsham</div>
+    <div class="location-card"><div class="location-dot"></div>+ Many More</div>
+  </div>
+</section>
+
+<!-- ─── FAQ ─── -->
+<section class="faq-section" id="faq">
+  <div class="section-head center">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">Common Questions Answered</h2>
+    <p class="section-desc">Everything you need to know before booking — straight answers, no fluff.</p>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Do I need to be home during the clean?
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M10 5v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="faq-a">No — most of our customers provide a key or a door code. Our police-checked cleaners will lock up after themselves. If you'd prefer to be home, that's perfectly fine too.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Do you bring your own cleaning products and equipment?
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M10 5v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="faq-a">Yes, always. We bring all professional-grade, eco-friendly cleaning products, vacuums, steam cleaners, and equipment. You don't need to supply a thing.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How much does cleaning cost in Victoria?
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M10 5v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="faq-a">Pricing depends on the size of your property and service type. A standard house clean starts from $130, deep cleaning from $280, and carpet cleaning from $80 per room. Book a free quote online for an exact price with no hidden fees.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Do you offer a satisfaction guarantee?
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M10 5v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="faq-a">Yes — we offer a 100% bond-back guarantee. If your property manager identifies any cleaning issues within 72 hours of our clean, we will return to re-clean those areas at no extra cost.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        How quickly can you come?
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M10 5v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="faq-a">Often same-day, especially in the Melbourne metro area. For regional Victoria, we typically book 1–2 days ahead. For urgent flood or emergency cleans, we aim to arrive within 2–4 hours.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Are your cleaners insured and police checked?
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M10 5v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="faq-a">Absolutely. Every KleanVictoria team member carries a current National Police Check, is covered under our $10M public liability policy, and has completed our professional training program.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        Can I book a recurring cleaning service?
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M10 5v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="faq-a">Yes! We offer weekly, fortnightly, and monthly regular cleaning plans at discounted rates. You can set up a recurring schedule online or over the phone, and you can pause or cancel anytime.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        What payment methods do you accept?
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M5 10h10M10 5v10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </button>
+      <div class="faq-a">We accept credit/debit card (Visa, Mastercard), direct bank transfer, and cash. Payment is processed after the job is complete and you are satisfied. No upfront deposits required for standard bookings.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CTA BAND ─── -->
+<div class="cta-band">
+  <div>
+    <h2>Ready for a Spotless Space?</h2>
+    <p>Join 4,800+ satisfied Victorians. Book online in 60 seconds or call us now.</p>
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:14px;align-items:center;">
+    <button class="btn-white" onclick="openModal()">
+      Get Free Quote →
+    </button>
+    <a href="tel:0390001234" style="color:#fff;font-size:1.05rem;font-weight:700;display:flex;align-items:center;gap:8px;padding:14px 20px;border:2px solid rgba(255,255,255,0.3);border-radius:10px;transition:border-color 0.15s;">
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2.5 2.5h4.5l1.8 4-2.4 1.4C7.7 9.8 8.2 10.3 9.1 11.1s1.3 1.4 3.1 2.6l1.4-2.4 4 1.8V17c-7.7 0-15-7.3-15-15z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      03 9000 1234
+    </a>
+  </div>
+</div>
+
+<!-- ─── FOOTER ─── -->
+<footer id="contact">
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <a href="#" class="nav-logo" style="margin-bottom:0;">
+        <div class="logo-icon">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+            <path d="M11 2C6.03 2 2 6.03 2 11s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9z" fill="none" stroke="#4dd9cc" stroke-width="1.8"/>
+            <path d="M7 11.5s1.2 2.5 4 2.5 4-2.5 4-2.5" stroke="#4dd9cc" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M8 9V8m6 1V8" stroke="#fff" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div>
+          <div class="logo-wordmark" style="color:#fff;">Clean<em>Victoria</em></div>
+          <div class="logo-sub">Victoria's #1 Cleaners</div>
+        </div>
+      </a>
+      <p>Victoria's most trusted professional cleaning service. Serving Melbourne and all of regional Victoria since 2018. ABN 12 345 678 901.</p>
+      <div class="footer-contact">
+        <a href="tel:0390001234">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 2h4l1.5 3.5-2 1.2C6.2 8.5 7.5 9.8 9.3 10.5l1.2-2L14 10v4c-6.6 0-12-5.4-12-12z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+          03 9000 1234
+        </a>
+        <a href="mailto:hello@kleanvictoria.com.au">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="2" y="4" width="12" height="9" rx="2" stroke="currentColor" stroke-width="1.4"/><path d="M2 6l6 4 6-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          hello@kleanvictoria.com.au
+        </a>
+        <a href="#">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="7" r="3" stroke="currentColor" stroke-width="1.4"/><path d="M8 2C5.2 2 3 4.2 3 7c0 4 5 9 5 9s5-5 5-9c0-2.8-2.2-5-5-5z" stroke="currentColor" stroke-width="1.4"/></svg>
+          Melbourne VIC 3000, Australia
+        </a>
+      </div>
+    </div>
+
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul class="footer-links">
+        <li><a href="carpet-cleaning.html">Carpet Cleaning</a></li>
+        <li><a href="#services">Deep Cleaning</a></li>
+        <li><a href="#services">House Cleaning</a></li>
+        <li><a href="#services">Commercial Cleaning</a></li>
+        <li><a href="#services">Window Cleaning</a></li>
+        <li><a href="#services">Deep Cleaning</a></li>
+        <li><a href="#services">Upholstery Cleaning</a></li>
+        <li><a href="#services">Oven Cleaning</a></li>
+        <li><a href="#services">Mattress Cleaning</a></li>
+        <li><a href="#services">Tile &amp; Grout</a></li>
+        <li><a href="#services">Rug Cleaning</a></li>
+        <li><a href="#services">Flood Restoration</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Locations</h4>
+      <ul class="footer-links">
+        <li><a href="melbourne.html">Melbourne CBD</a></li>
+        <li><a href="melbourne.html">Inner Suburbs</a></li>
+        <li><a href="melbourne.html">Eastern Suburbs</a></li>
+        <li><a href="melbourne.html">Western Suburbs</a></li>
+        <li><a href="melbourne.html">Northern Suburbs</a></li>
+        <li><a href="melbourne.html">Geelong</a></li>
+        <li><a href="melbourne.html">Ballarat</a></li>
+        <li><a href="melbourne.html">Bendigo</a></li>
+        <li><a href="melbourne.html">Mornington Peninsula</a></li>
+        <li><a href="melbourne.html">Regional Victoria</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-col">
+      <h4>Company</h4>
+      <ul class="footer-links">
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="about-us.html">Our Team</a></li>
+        <li><a href="#testimonials">Reviews</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+      <div style="margin-top:24px;">
+        <h4>Hours</h4>
+        <div style="font-size:14px;color:rgba(255,255,255,0.55);line-height:1.8;">
+          Mon–Fri: 7am – 8pm<br/>
+          Sat–Sun: 7am – 6pm<br/>
+          Emergency: 24/7
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div>© 2026 KleanVictoria Pty Ltd · ABN 12 345 678 901 · All rights reserved.</div>
+    <div class="footer-bottom-links">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Sitemap</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── STICKY MOBILE CTA ─── -->
+<div class="sticky-cta">
+  <a href="tel:0390001234" class="btn-phone">📞 Call</a>
+  <button class="btn-primary" onclick="openModal()">Book Now — Free Quote</button>
+</div>
+
+<!-- ─── BOOKING MODAL ─── -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal" id="modalBox">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+    <div id="modalForm">
+      <h2>Get Your Free Quote</h2>
+      <p>Fill in your details and we'll call you within 30 minutes with a no-obligation price.</p>
+      <select class="modal-input" id="modalService">
+        <option value="" disabled selected>Select a service *</option>
+        <option>Carpet Cleaning</option>
+        <option>House Cleaning</option>
+        <option>Commercial Cleaning</option>
+        <option>Window Cleaning</option>
+        <option>Deep Cleaning</option>
+        <option>Upholstery Cleaning</option>
+        <option>Mattress Cleaning</option>
+        <option>Tile &amp; Grout Cleaning</option>
+        <option>Oven Cleaning</option>
+        <option>Rug Cleaning</option>
+        <option>Flood Damage Restoration</option>
+      </select>
+      <div class="modal-row">
+        <input class="modal-input" type="text" id="modalName" placeholder="Full name *" />
+        <input class="modal-input" type="tel" id="modalPhone" placeholder="Phone number *" />
+      </div>
+      <input class="modal-input" type="email" id="modalEmail" placeholder="Email address" />
+      <div class="modal-row">
+        <input class="modal-input" type="text" id="modalSuburb" placeholder="Suburb / Postcode *" />
+        <select class="modal-input" id="modalTime">
+          <option value="" disabled selected>When?</option>
+          <option>Today (Same-day)</option>
+          <option>Tomorrow</option>
+          <option>This week</option>
+          <option>Next week</option>
+          <option>I'm flexible</option>
+        </select>
+      </div>
+      <textarea class="modal-input" rows="3" placeholder="Anything else? (e.g. property size, special requests)" style="resize:vertical;"></textarea>
+      <button class="modal-btn" onclick="submitModal()">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9h12M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        Get My Free Quote Now
+      </button>
+      <p style="font-size:12px;color:var(--muted);text-align:center;margin-top:12px;">🔒 Your details are 100% safe and never shared. No spam.</p>
+    </div>
+    <div id="modalSuccess" class="modal-success" style="display:none;">
+      <div class="check">✓</div>
+      <h3>Quote Request Received!</h3>
+      <p>Thank you! Our team will call you within 30 minutes during business hours. For urgent jobs, call us directly:</p>
+      <a href="tel:0390001234" class="btn-primary" style="display:inline-flex;margin-top:16px;font-size:16px;padding:14px 28px;">📞 03 9000 1234</a>
+    </div>
+  </div>
+</div>
+
+<!-- ─── REACT APP (Tweaks) ─── -->
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accentColor": "#4e92da",
+    "heroHeadline": "A Spotlessly Clean Home or Business, Guaranteed.",
+    "phoneNumber": "03 9000 1234",
+    "showAnnounceBar": true,
+    "trustBadgeText": "⭐ 4.9\/5 · 620+ Reviews",
+    "darkNav": false
+  }/*EDITMODE-END*/;
+
+  function TweaksApp() {
+    const [tweaks, setTweak] = useTweaks(TWEAK_DEFAULTS);
+
+    React.useEffect(() => {
+      if (tweaks && tweaks.accentColor) {
+        document.documentElement.style.setProperty('--teal', tweaks.accentColor);
+      }
+    }, [tweaks && tweaks.accentColor]);
+
+    React.useEffect(() => {
+      if (!tweaks) return;
+      const bar = document.querySelector('.announce');
+      if (bar) bar.style.display = tweaks.showAnnounceBar ? '' : 'none';
+    }, [tweaks && tweaks.showAnnounceBar]);
+
+    React.useEffect(() => {
+      if (!tweaks) return;
+      const badge = document.querySelector('.floating-badge');
+      if (badge && tweaks.trustBadgeText) badge.textContent = tweaks.trustBadgeText;
+    }, [tweaks && tweaks.trustBadgeText]);
+
+    if (!tweaks) return null;
+
+    return (
+      <TweaksPanel title="Tweaks">
+        <TweakSection label="Branding">
+          <TweakColor label="Accent Colour" value={tweaks.accentColor} onChange={v => setTweak('accentColor', v)} />
+          <TweakText label="Phone Number" value={tweaks.phoneNumber} onChange={v => setTweak('phoneNumber', v)} />
+        </TweakSection>
+        <TweakSection label="Hero">
+          <TweakText label="Hero Headline" value={tweaks.heroHeadline} onChange={v => setTweak('heroHeadline', v)} />
+          <TweakText label="Trust Badge" value={tweaks.trustBadgeText} onChange={v => setTweak('trustBadgeText', v)} />
+        </TweakSection>
+        <TweakSection label="Layout">
+          <TweakToggle label="Show Announce Bar" value={tweaks.showAnnounceBar} onChange={v => setTweak('showAnnounceBar', v)} />
+        </TweakSection>
+      </TweaksPanel>
+    );
+  }
+
+  const tweaksRoot = document.createElement('div');
+  document.body.appendChild(tweaksRoot);
+  ReactDOM.createRoot(tweaksRoot).render(<TweaksApp />);
+</script>
+
+<!-- ─── VANILLA JS ─── -->
+<script>
+  // ── Mobile nav ──
+  document.getElementById('hamburger').addEventListener('click', () => {
+    document.getElementById('mobileNav').classList.add('open');
+  });
+  document.getElementById('navClose').addEventListener('click', closeMobileNav);
+  function closeMobileNav() {
+    document.getElementById('mobileNav').classList.remove('open');
+  }
+
+  // ── Hero funnel ──
+  let heroSelectedService = null;
+  function selectHeroService(el, name) {
+    document.querySelectorAll('.service-chip').forEach(c => c.classList.remove('selected'));
+    el.classList.add('selected');
+    heroSelectedService = name;
+  }
+  function heroStep(step) {
+    [1,2,3].forEach(s => {
+      document.getElementById('heroStep'+s).style.display = s === step ? '' : 'none';
+      const fstep = document.getElementById('fstep'+s);
+      fstep.className = 'funnel-step';
+      if (s < step) fstep.classList.add('done');
+      if (s === step) fstep.classList.add('active');
+    });
+    if (step === 3) {
+      // Auto-fill modal with hero data
+      const name = document.getElementById('heroName')?.value || '';
+      const phone = document.getElementById('heroPhone')?.value || '';
+      if (name) document.getElementById('modalName').value = name;
+      if (phone) document.getElementById('modalPhone').value = phone;
+      if (heroSelectedService) document.getElementById('modalService').value = heroSelectedService;
+    }
+  }
+
+  // ── Modal ──
+  function openModal() {
+    document.getElementById('modalOverlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function openModalWith(service) {
+    openModal();
+    setTimeout(() => {
+      const sel = document.getElementById('modalService');
+      for (let o of sel.options) {
+        if (o.text.toLowerCase().includes(service.toLowerCase().split(' ')[0])) {
+          sel.value = o.value;
+          break;
+        }
+      }
+    }, 50);
+  }
+  function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+  function handleOverlayClick(e) {
+    if (e.target === document.getElementById('modalOverlay')) closeModal();
+  }
+  function submitModal() {
+    const name = document.getElementById('modalName').value.trim();
+    const phone = document.getElementById('modalPhone').value.trim();
+    const service = document.getElementById('modalService').value;
+    if (!name || !phone || !service) {
+      alert('Please fill in your name, phone number, and the service you need.');
+      return;
+    }
+    document.getElementById('modalForm').style.display = 'none';
+    document.getElementById('modalSuccess').style.display = 'block';
+  }
+
+  // ── FAQ ──
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = btn.classList.contains('open');
+    document.querySelectorAll('.faq-q.open').forEach(q => {
+      q.classList.remove('open');
+      q.nextElementSibling.classList.remove('open');
+    });
+    if (!isOpen) {
+      btn.classList.add('open');
+      answer.classList.add('open');
+    }
+  }
+
+  // ── Scroll animation (intersection observer) ──
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.hiw-card, .service-card, .why-item, .testimonial-card, .location-card').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    io.observe(el);
+  });
+
+  // ── Escape key closes modal/nav ──
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') { closeModal(); closeMobileNav(); }
+  });
+
+  // ── Before/After Sliders ──
+  function initBASlider(wrapId, beforeId, handleId) {
+    const wrap = document.getElementById(wrapId);
+    const before = document.getElementById(beforeId);
+    const handle = document.getElementById(handleId);
+    if (!wrap || !before || !handle) return;
+    let dragging = false;
+    function setPos(x) {
+      const rect = wrap.getBoundingClientRect();
+      let pct = ((x - rect.left) / rect.width) * 100;
+      pct = Math.max(5, Math.min(95, pct));
+      before.style.width = pct + '%';
+      handle.style.left = pct + '%';
+    }
+    handle.addEventListener('mousedown', e => { dragging = true; e.preventDefault(); });
+    wrap.addEventListener('mousedown', e => { dragging = true; setPos(e.clientX); });
+    document.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
+    document.addEventListener('mouseup', () => dragging = false);
+    wrap.addEventListener('touchstart', e => { dragging = true; setPos(e.touches[0].clientX); }, { passive: true });
+    document.addEventListener('touchmove', e => { if (dragging) setPos(e.touches[0].clientX); }, { passive: true });
+    document.addEventListener('touchend', () => dragging = false);
+  }
+  initBASlider('hba1', 'hba1-b', 'hba1-h');
+  initBASlider('hba2', 'hba2-b', 'hba2-h');
+  initBASlider('hba3', 'hba3-b', 'hba3-h');
+</script>
+
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 120 80" xmlns="http://www.w3.org/2000/svg">
+    <rect width="120" height="80" fill="#0d1b2e"/>
+    <circle cx="60" cy="40" r="22" fill="none" stroke="#4dd9cc" stroke-width="2"/>
+    <path d="M48 40s4 8 12 8 12-8 12-8" stroke="#4dd9cc" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <text x="60" y="70" text-anchor="middle" fill="#4dd9cc" font-size="9" font-family="sans-serif" font-weight="bold">KleanVictoria</text>
+  </svg>
+</template>
+
+</body>
+</html>
