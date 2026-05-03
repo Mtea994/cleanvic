@@ -29,7 +29,7 @@ const homeFaq = [
   },
   {
     q: "How quickly can you book me in?",
-    a: "Most jobs are booked in within 24–72 hours. Let us know your preferred date and we'll do our best to match it.",
+    a: "Most jobs are booked in within 24–48 hours. Let us know your preferred date and we'll do our best to match it.",
   },
   {
     q: "Are your cleaners police-checked?",

@@ -17,7 +17,7 @@ import { getReviewStats } from "@/lib/reviews/getReviewStats";
 export const metadata: Metadata = {
   title: "Cleaning Services Melbourne",
   description:
-    "All KleanVictoria cleaning services — carpet, house, deep, end-of-lease, commercial, window, upholstery, mattress, tile and grout, oven, rug, water-damaged carpet drying.",
+    "All KleanVictoria cleaning services — carpet, upholstery, mattress, rug, tile and grout, deep, end-of-lease, emergency flood restoration, house, commercial, window, and oven cleaning.",
   alternates: { canonical: "/services" },
 };
 

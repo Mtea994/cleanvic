@@ -152,7 +152,7 @@ export function HomeHero({ reviewStats }: HomeHeroProps) {
               }}
             >
               {[
-                { num: "4,800+", label: "Happy Customers" },
+                { num: "1000+", label: "Happy Customers" },
                 { num: "100%", label: "Satisfaction Guarantee" },
                 { num: "Same-Day", label: "Bookings Available" },
                 { num: "12+", label: "Services Offered" },

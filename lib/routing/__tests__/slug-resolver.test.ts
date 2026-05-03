@@ -47,10 +47,10 @@ describe("resolveSlug", () => {
   });
 
   it("handles multi-word service + multi-word location", () => {
-    const r = resolveSlug("water-damaged-carpet-drying-st-kilda");
+    const r = resolveSlug("emergency-flood-restoration-st-kilda");
     expect(r.kind).toBe("combo");
     if (r.kind === "combo") {
-      expect(r.service.slug).toBe("water-damaged-carpet-drying");
+      expect(r.service.slug).toBe("emergency-flood-restoration");
       expect(r.location.slug).toBe("st-kilda");
     }
   });

@@ -41,10 +41,10 @@ export function BeforeAfter({
       aria-valuemax={100}
       tabIndex={0}
       className={`relative overflow-hidden rounded-[14px] select-none ${className}`}
-      style={{ aspectRatio: "16 / 10", touchAction: "none" }}
+      style={{ aspectRatio: "16 / 10", touchAction: "pan-y" }}
       onPointerDown={(e) => {
         (e.target as HTMLElement).setPointerCapture(e.pointerId);
-        setFromClientX(e.clientX);
+        if (e.pointerType !== "touch") setFromClientX(e.clientX);
       }}
       onPointerMove={(e) => {
         if (e.buttons !== 1) return;

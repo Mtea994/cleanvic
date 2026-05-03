@@ -21,6 +21,48 @@ const heroChips: { slug: LeadInput["service"]; label: string; icon: React.ReactN
         ),
     },
     {
+        slug: "upholstery-cleaning",
+        label: "Upholstery",
+        icon: (
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                <path d="M3 11h10v2H3z" stroke="currentColor" strokeWidth="1.3" />
+                <path d="M4 11V7a1.5 1.5 0 011.5-1.5h5A1.5 1.5 0 0112 7v4" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
+            </svg>
+        ),
+    },
+    {
+        slug: "mattress-cleaning",
+        label: "Mattress",
+        icon: (
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                <rect x="2" y="6" width="12" height="5" rx="1.5" stroke="currentColor" strokeWidth="1.3" />
+                <rect x="2" y="11" width="12" height="2" rx="0.7" stroke="currentColor" strokeWidth="1.2" />
+            </svg>
+        ),
+    },
+    {
+        slug: "rug-cleaning",
+        label: "Rug Cleaning",
+        icon: (
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                <rect x="3" y="4" width="10" height="8" rx="1" stroke="currentColor" strokeWidth="1.3" />
+                <path d="M3 7h10M3 9h10M5 4v8M11 4v8" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.5" />
+            </svg>
+        ),
+    },
+    {
+        slug: "tile-and-grout-cleaning",
+        label: "Tile & Grout",
+        icon: (
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                <rect x="2" y="2" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.3" />
+                <rect x="9" y="2" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.3" />
+                <rect x="2" y="9" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.3" />
+                <rect x="9" y="9" width="5" height="5" rx="1" stroke="currentColor" strokeWidth="1.3" />
+            </svg>
+        ),
+    },
+    {
         slug: "deep-cleaning",
         label: "Deep Clean",
         icon: (
@@ -31,41 +73,22 @@ const heroChips: { slug: LeadInput["service"]; label: string; icon: React.ReactN
         ),
     },
     {
-        slug: "house-cleaning",
-        label: "House Cleaning",
+        slug: "end-of-lease-cleaning",
+        label: "End of Lease",
         icon: (
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-                <path d="M3 14V8M13 14V8M1 8l7-6 7 6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" />
+                <rect x="3" y="3" width="10" height="11" rx="1" stroke="currentColor" strokeWidth="1.3" />
+                <path d="M5 2h6v3H5z" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+                <path d="M5 8h6M5 11h4" stroke="currentColor" strokeWidth="1.1" strokeLinecap="round" opacity="0.6" />
             </svg>
         ),
     },
     {
-        slug: "commercial-cleaning",
-        label: "Commercial",
+        slug: "emergency-flood-restoration",
+        label: "Flood Restoration",
         icon: (
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-                <rect x="2" y="2" width="12" height="12" rx="1" stroke="currentColor" strokeWidth="1.4" />
-                <path d="M5 6h6M5 9h4M5 12h6" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-            </svg>
-        ),
-    },
-    {
-        slug: "window-cleaning",
-        label: "Window Cleaning",
-        icon: (
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-                <rect x="2" y="2" width="12" height="12" rx="1" stroke="currentColor" strokeWidth="1.4" />
-                <path d="M8 2v12M2 8h12" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-            </svg>
-        ),
-    },
-    {
-        slug: "upholstery-cleaning",
-        label: "Upholstery",
-        icon: (
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
-                <circle cx="8" cy="8" r="5.5" stroke="currentColor" strokeWidth="1.4" />
-                <path d="M8 5v3l2 1.5" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
+                <path d="M8 2c-1.5 2.5-4 4.5-4 7a4 4 0 008 0c0-2.5-2.5-4.5-4-7z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
             </svg>
         ),
     },

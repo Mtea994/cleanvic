@@ -22,7 +22,7 @@ const locationFaq = (loc: Location) => [
   },
   {
     q: `How quickly can you get to ${loc.name}?`,
-    a: "Most jobs in our core area are booked within 24–72 hours of your quote. Same-day callbacks are standard.",
+    a: "Most jobs in our core area are booked within 24–48 hours of your quote. Same-day callbacks are standard.",
   },
   {
     q: "Are you fully insured?",

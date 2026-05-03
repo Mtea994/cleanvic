@@ -36,7 +36,7 @@ export function ConsentBanner() {
     <div
       role="dialog"
       aria-label="Cookie preferences"
-      className="fixed bottom-4 left-4 right-4 sm:left-auto sm:bottom-6 sm:right-6 sm:w-[380px] z-[700] bg-white text-text-primary rounded-[14px] shadow-card-lg border border-border-soft"
+      className="hidden sm:block fixed sm:bottom-6 sm:right-6 sm:w-[380px] z-[700] bg-white text-text-primary rounded-[14px] shadow-card-lg border border-border-soft"
       style={{ padding: 18 }}
     >
       <p style={{ fontSize: 14, lineHeight: 1.6, marginBottom: 12 }}>

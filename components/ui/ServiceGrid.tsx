@@ -16,30 +16,32 @@ interface ServiceGridProps {
 
 const TAGS: Record<string, string> = {
   "carpet-cleaning": "Most Popular",
+  "upholstery-cleaning": "Sofa & Fabric",
+  "mattress-cleaning": "Health & Hygiene",
+  "rug-cleaning": "Delicate Fabrics",
+  "tile-and-grout-cleaning": "Bathroom & Kitchen",
   "deep-cleaning": "Intensive",
+  "end-of-lease-cleaning": "Bond Back",
+  "emergency-flood-restoration": "Emergency",
   "house-cleaning": "Regular & One-off",
   "commercial-cleaning": "Business",
   "window-cleaning": "Interior & Exterior",
-  "upholstery-cleaning": "Sofa & Fabric",
-  "mattress-cleaning": "Health & Hygiene",
-  "tile-and-grout-cleaning": "Bathroom & Kitchen",
   "oven-cleaning": "Kitchen",
-  "rug-cleaning": "Delicate Fabrics",
-  "water-damaged-carpet-drying": "Emergency",
 };
 
 const IMG_LABELS: Record<string, string> = {
   "carpet-cleaning": "carpet / rug photo",
+  "upholstery-cleaning": "sofa upholstery close-up",
+  "mattress-cleaning": "mattress steam cleaning",
+  "rug-cleaning": "persian or wool rug",
+  "tile-and-grout-cleaning": "tile grout before/after",
   "deep-cleaning": "clean empty house interior",
+  "end-of-lease-cleaning": "bond-back end of lease clean",
+  "emergency-flood-restoration": "flood restoration cleanup",
   "house-cleaning": "clean modern living room",
   "commercial-cleaning": "modern office interior",
   "window-cleaning": "sparkling clean windows",
-  "upholstery-cleaning": "sofa upholstery close-up",
-  "mattress-cleaning": "mattress steam cleaning",
-  "tile-and-grout-cleaning": "tile grout before/after",
   "oven-cleaning": "clean oven interior",
-  "rug-cleaning": "persian or wool rug",
-  "water-damaged-carpet-drying": "water damage restoration",
 };
 
 export function ServiceGrid({
@@ -59,12 +61,30 @@ export function ServiceGrid({
         const tag = TAGS[s.slug];
         const imgLabel = IMG_LABELS[s.slug] ?? s.name.toLowerCase();
         const cardClass =
-          "group bg-white rounded-[14px] border border-border-soft overflow-hidden cursor-pointer transition-[transform,box-shadow] duration-200 hover:-translate-y-[3px] hover:shadow-card-lg fade-in-up";
+          "group relative flex flex-col bg-white rounded-[14px] border border-border-soft overflow-hidden cursor-pointer transition-[transform,box-shadow] duration-200 hover:-translate-y-[3px] hover:shadow-card-lg fade-in-up";
 
         const href = locationSlug ? `/${s.slug}-${locationSlug}` : `/${s.slug}`;
 
-        const inner = (
-          <>
+        const arrow = (
+          <svg
+            width="14"
+            height="14"
+            viewBox="0 0 14 14"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M2 7h10M8 3l4 4-4 4"
+              stroke="currentColor"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        );
+
+        return (
+          <li key={s.slug} className={cardClass}>
             <div className="relative h-[160px] bg-navy2 flex items-center justify-center overflow-hidden">
               {s.heroImage ? (
                 <Image
@@ -100,53 +120,38 @@ export function ServiceGrid({
                 </span>
               )}
               <h3 className="text-[1.05rem] font-extrabold text-navy mb-2">
-                {s.name}
+                <Link
+                  href={href}
+                  aria-label={s.name}
+                  className="after:content-[''] after:absolute after:inset-0 after:z-[1] focus:outline-none focus-visible:underline"
+                >
+                  {s.name}
+                </Link>
               </h3>
               <p className="text-muted text-[14px] leading-[1.6] mb-4">
                 {s.shortDescription}
               </p>
-              <span className="inline-flex items-center gap-[6px] text-teal text-[14px] font-bold transition-[gap] duration-150 group-hover:gap-[10px] mt-auto">
-                {cta}
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 14 14"
-                  fill="none"
-                  aria-hidden="true"
+              {openModal ? (
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    openBooking(s.slug);
+                  }}
+                  className="relative z-[2] self-start inline-flex items-center gap-[6px] text-teal text-[14px] font-bold transition-[gap] duration-150 group-hover:gap-[10px] mt-auto bg-transparent border-0 p-0 cursor-pointer hover:brightness-110"
+                  aria-label={`Book ${s.name}`}
                 >
-                  <path
-                    d="M2 7h10M8 3l4 4-4 4"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
+                  {cta}
+                  {arrow}
+                </button>
+              ) : (
+                <span className="inline-flex items-center gap-[6px] text-teal text-[14px] font-bold transition-[gap] duration-150 group-hover:gap-[10px] mt-auto">
+                  {cta}
+                  {arrow}
+                </span>
+              )}
             </div>
-          </>
-        );
-
-        return (
-          <li key={s.slug} className={cardClass}>
-            {openModal ? (
-              <button
-                type="button"
-                onClick={() => openBooking(s.slug)}
-                className="flex flex-col h-full w-full text-left bg-transparent border-0 p-0 cursor-pointer"
-                aria-label={`Book ${s.name}`}
-              >
-                {inner}
-              </button>
-            ) : (
-              <Link
-                href={href}
-                className="flex flex-col h-full"
-                aria-label={s.name}
-              >
-                {inner}
-              </Link>
-            )}
           </li>
         );
       })}
