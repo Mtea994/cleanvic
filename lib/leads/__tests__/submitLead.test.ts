@@ -97,7 +97,7 @@ describe("submitLead", () => {
     if (!result.ok) expect(result.error.kind).toBe("validation");
   });
 
-  it("bubbles a typed error when Supabase insert fails", async () => {
+  it("still emails the lead when the Supabase insert fails", async () => {
     deps = makeDeps({
       supabase: {
         insertLead: vi.fn(async () => ({ error: { message: "db down" } })),
@@ -105,28 +105,37 @@ describe("submitLead", () => {
       },
     });
     const result = await submitLead(VALID_INPUT, CONTEXT, deps);
-    expect(result.ok).toBe(false);
-    if (!result.ok) {
-      expect(result.error.kind).toBe("supabase-error");
-      if (result.error.kind === "supabase-error") {
-        expect(result.error.detail).toContain("db down");
-      }
-    }
-    expect(deps.resend.send).not.toHaveBeenCalled();
+    expect(result.ok).toBe(true);
+    expect(deps.resend.send).toHaveBeenCalledOnce();
   });
 
-  it("returns success even when Resend fails (email is best-effort)", async () => {
+  it("still emails the lead when the rate-limit query throws", async () => {
+    deps = makeDeps({
+      supabase: {
+        insertLead: vi.fn(async () => ({ error: null })),
+        countRecentLeadsByIp: vi.fn(async () => {
+          throw new Error("schema cache miss");
+        }),
+      },
+    });
+    const result = await submitLead(VALID_INPUT, CONTEXT, deps);
+    expect(result.ok).toBe(true);
+    expect(deps.resend.send).toHaveBeenCalledOnce();
+  });
+
+  it("fails the submission when Resend returns an error (email is the primary channel)", async () => {
     deps = makeDeps({
       resend: {
         send: vi.fn(async () => ({ error: { message: "resend down" } })),
       },
     });
     const result = await submitLead(VALID_INPUT, CONTEXT, deps);
-    expect(result.ok).toBe(true);
+    expect(result.ok).toBe(false);
+    if (!result.ok) expect(result.error.detail).toContain("resend down");
     expect(deps.supabase.insertLead).toHaveBeenCalledOnce();
   });
 
-  it("returns success even when Resend throws", async () => {
+  it("fails the submission when Resend throws", async () => {
     deps = makeDeps({
       resend: {
         send: vi.fn(async () => {
@@ -135,6 +144,6 @@ describe("submitLead", () => {
       },
     });
     const result = await submitLead(VALID_INPUT, CONTEXT, deps);
-    expect(result.ok).toBe(true);
+    expect(result.ok).toBe(false);
   });
 });

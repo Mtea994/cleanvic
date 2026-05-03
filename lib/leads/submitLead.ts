@@ -57,7 +57,7 @@ export interface ResendClientLike {
   }): Promise<{ error: { message: string } | null }>;
 }
 
-const RATE_LIMIT_WINDOW_SECONDS = 60;
+const RATE_LIMIT_WINDOW_SECONDS = 30;
 
 function buildEmailBody(input: LeadInput, context: LeadContext, now: Date): string {
   return [
@@ -103,7 +103,8 @@ export async function submitLead(
 
   const now = deps.now?.() ?? new Date();
 
-  // 3. Rate-limit
+  // 3. Rate-limit (fail-open: a Supabase outage must not block legitimate
+  //    submissions, since email is the fallback delivery channel).
   const sinceIso = new Date(now.getTime() - RATE_LIMIT_WINDOW_SECONDS * 1000).toISOString();
   try {
     const recent = await deps.supabase.countRecentLeadsByIp(context.ip, sinceIso);
@@ -111,37 +112,39 @@ export async function submitLead(
       return { ok: false, error: { kind: "rate-limited" } };
     }
   } catch (err) {
-    return {
-      ok: false,
-      error: {
-        kind: "supabase-error",
-        detail: err instanceof Error ? err.message : "rate-limit query failed",
-      },
-    };
+    console.error(
+      "[lead] rate-limit query failed, continuing:",
+      err instanceof Error ? err.message : String(err),
+    );
   }
 
-  // 4. Supabase insert
-  const insertResult = await deps.supabase.insertLead({
-    service: input.service,
-    name: input.name,
-    phone: input.phone,
-    email: input.email,
-    suburb: input.suburb,
-    preferred_date: input.preferredDate,
-    preferred_time: input.preferredTime,
-    notes: input.notes,
-    submitted_ip: context.ip,
-    submitted_user_agent: context.userAgent,
-  });
-  if (insertResult.error) {
-    return {
-      ok: false,
-      error: { kind: "supabase-error", detail: insertResult.error.message },
-    };
+  // 4. Supabase insert (best-effort: a missing table or transient outage must
+  //    not lose the lead — we still email it through).
+  try {
+    const insertResult = await deps.supabase.insertLead({
+      service: input.service,
+      name: input.name,
+      phone: input.phone,
+      email: input.email,
+      suburb: input.suburb,
+      preferred_date: input.preferredDate,
+      preferred_time: input.preferredTime,
+      notes: input.notes,
+      submitted_ip: context.ip,
+      submitted_user_agent: context.userAgent,
+    });
+    if (insertResult.error) {
+      console.error("[lead] Supabase insert failed:", insertResult.error.message);
+    }
+  } catch (err) {
+    console.error(
+      "[lead] Supabase insert threw:",
+      err instanceof Error ? err.message : String(err),
+    );
   }
 
-  // 5. Resend send (best-effort; failures logged but do not bubble — the lead
-  //    is already persisted, email is secondary).
+  // 5. Resend send — primary delivery channel. If this fails the user-facing
+  //    submission fails too, since otherwise the lead is silently dropped.
   try {
     const emailResult = await deps.resend.send({
       from: deps.resendFrom,
@@ -151,12 +154,15 @@ export async function submitLead(
     });
     if (emailResult.error) {
       console.error("[lead] Resend send failed:", emailResult.error.message);
+      return {
+        ok: false,
+        error: { kind: "unknown", detail: emailResult.error.message },
+      };
     }
   } catch (err) {
-    console.error(
-      "[lead] Resend send threw:",
-      err instanceof Error ? err.message : String(err),
-    );
+    const detail = err instanceof Error ? err.message : String(err);
+    console.error("[lead] Resend send threw:", detail);
+    return { ok: false, error: { kind: "unknown", detail } };
   }
 
   return { ok: true };
