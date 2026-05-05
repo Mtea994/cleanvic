@@ -22,6 +22,8 @@ export const abn = process.env.NEXT_PUBLIC_ABN || "00 000 000 000";
 
 export const ga4Id = process.env.NEXT_PUBLIC_GA4_ID || "";
 export const clarityId = process.env.NEXT_PUBLIC_CLARITY_ID || "";
+export const googleAdsId =
+  process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || "AW-18136121377";
 
 // Melbourne CBD geo coordinates for LocalBusiness schema.
 export const businessGeo = { lat: -37.8136, lng: 144.9631 };

@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import { Analytics as VercelAnalytics } from "@vercel/analytics/react";
 import { fontBody, fontDisplay } from "./fonts";
-import { siteUrl } from "@/lib/config/site";
+import { googleAdsId, siteUrl } from "@/lib/config/site";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { AnnounceBar } from "@/components/layout/AnnounceBar";
@@ -54,6 +55,23 @@ export default function RootLayout({
   return (
     <html lang="en-AU" className={`${fontBody.variable} ${fontDisplay.variable}`}>
       <body>
+        {googleAdsId && (
+          <>
+            <Script
+              id="google-ads-loader"
+              strategy="afterInteractive"
+              src={`https://www.googletagmanager.com/gtag/js?id=${googleAdsId}`}
+            />
+            <Script id="google-ads-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${googleAdsId}');
+              `}
+            </Script>
+          </>
+        )}
         <BookingModalProvider>
           <AnnounceBar />
           <Nav />
