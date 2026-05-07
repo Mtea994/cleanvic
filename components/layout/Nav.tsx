@@ -6,9 +6,14 @@ import { Logo } from "@/components/brand/Logo";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { phone, phoneTel } from "@/lib/config/site";
 import { useBookingModal } from "@/components/booking/BookingModalProvider";
+import { getAllServices } from "@/lib/content";
+import { PhoneIcon } from "@/components/ui/PhoneIcon";
+
+const navServices = getAllServices();
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const { openModal } = useBookingModal();
 
   return (
@@ -29,16 +34,62 @@ export function Nav() {
         <Link href="/" aria-label="KleanVictoria home" className="flex items-center gap-3">
           <Logo variant="lockup" />
         </Link>
+
         <ul
           className="hidden md:flex items-center gap-1.5 list-none"
           aria-label="Primary"
         >
-          <li><Link href="/services" className="text-text-primary px-3.5 py-2 rounded-lg font-semibold hover:bg-offwhite hover:text-teal">Services</Link></li>
+          {/* Services — hover dropdown */}
+          <li
+            className="relative"
+            onMouseEnter={() => setServicesOpen(true)}
+            onMouseLeave={() => setServicesOpen(false)}
+          >
+            <button
+              className="text-text-primary px-3.5 py-2 rounded-lg font-semibold hover:bg-offwhite hover:text-teal flex items-center gap-1.5 transition-colors h-[44px]"
+              aria-expanded={servicesOpen}
+              aria-haspopup="true"
+            >
+              Services
+              <ChevronDownIcon open={servicesOpen} />
+            </button>
+
+            {servicesOpen && (
+              <div className="absolute top-full left-0 z-50 pt-2 min-w-[210px]">
+              <div
+                className="bg-white-soft border border-border-soft rounded-[14px] py-2"
+                style={{ boxShadow: "0 12px 48px rgb(13 27 46 / 0.16)" }}
+              >
+                {navServices.map((s) => (
+                  <Link
+                    key={s.slug}
+                    href={`/${s.slug}`}
+                    className="block px-4 py-[9px] text-[14px] font-semibold text-text-primary hover:bg-offwhite hover:text-teal transition-colors"
+                    onClick={() => setServicesOpen(false)}
+                  >
+                    {s.name}
+                  </Link>
+                ))}
+                <div className="mx-3 mt-1 pt-2 border-t border-border-soft">
+                  <Link
+                    href="/services"
+                    className="flex items-center gap-1 px-1 py-1.5 text-[13px] font-bold text-teal hover:text-teal/80 transition-colors"
+                    onClick={() => setServicesOpen(false)}
+                  >
+                    View all services →
+                  </Link>
+                </div>
+              </div>
+              </div>
+            )}
+          </li>
+
           <li><Link href="/locations" className="text-text-primary px-3.5 py-2 rounded-lg font-semibold hover:bg-offwhite hover:text-teal">Locations</Link></li>
           <li><Link href="/about" className="text-text-primary px-3.5 py-2 rounded-lg font-semibold hover:bg-offwhite hover:text-teal">About</Link></li>
           <li><Link href="/contact" className="text-text-primary px-3.5 py-2 rounded-lg font-semibold hover:bg-offwhite hover:text-teal">Contact</Link></li>
         </ul>
-        <div className="hidden md:flex items-center gap-3">
+
+        <div className="hidden md:flex items-center gap-3 shrink-0">
           <ButtonLink variant="phone" href={phoneTel}>
             <PhoneIcon /> {phone}
           </ButtonLink>
@@ -46,6 +97,7 @@ export function Nav() {
             Get a free quote
           </Button>
         </div>
+
         <button
           aria-label="Open navigation"
           aria-expanded={open}
@@ -57,7 +109,13 @@ export function Nav() {
           <span className="block w-6 h-[2.5px] bg-current rounded" />
         </button>
       </nav>
-      {open && <MobileNav onClose={() => setOpen(false)} onBook={() => { setOpen(false); openModal(); }} />}
+
+      {open && (
+        <MobileNav
+          onClose={() => setOpen(false)}
+          onBook={() => { setOpen(false); openModal(); }}
+        />
+      )}
     </>
   );
 }
@@ -86,10 +144,23 @@ function MobileNav({ onClose, onBook }: { onClose: () => void; onBook: () => voi
   );
 }
 
-function PhoneIcon() {
+function ChevronDownIcon({ open }: { open: boolean }) {
   return (
-    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
-      <path d="M3 2.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.42 1l.4 1.2a1.5 1.5 0 0 1-.34 1.6l-.7.7a8 8 0 0 0 3.22 3.22l.7-.7a1.5 1.5 0 0 1 1.6-.34l1.2.4a1.5 1.5 0 0 1 1 1.42v1a1.5 1.5 0 0 1-1.5 1.5A10.5 10.5 0 0 1 3 2.5Z" stroke="currentColor" strokeWidth="1.4"/>
+    <svg
+      width="13"
+      height="13"
+      viewBox="0 0 13 13"
+      fill="none"
+      aria-hidden
+      className={`transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+    >
+      <path
+        d="M2.5 4.5l4 4 4-4"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
     </svg>
   );
 }

@@ -3,7 +3,7 @@ export const siteUrl =
 
 export const businessName = "KleanVictoria";
 
-export const phone = process.env.NEXT_PUBLIC_PHONE || "(03) 9000 0000";
+export const phone = process.env.NEXT_PUBLIC_PHONE || "0460 777 982";
 
 export const phoneTel = `tel:${phone.replace(/[^0-9+]/g, "")}`;
 

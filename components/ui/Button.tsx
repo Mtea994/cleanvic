@@ -22,7 +22,7 @@ const baseClasses: Record<Variant, string> = {
   secondary:
     "inline-flex items-center gap-2 bg-transparent text-navy text-[15px] font-bold px-[22px] py-[10px] rounded-[9px] border-2 border-navy transition hover:bg-navy hover:text-white min-h-[44px]",
   phone:
-    "inline-flex items-center gap-[7px] text-navy text-[15px] font-bold px-[14px] py-[8px] rounded-[8px] border-2 border-navy transition hover:bg-navy hover:text-white min-h-[44px]",
+    "inline-flex items-center gap-[7px] text-navy text-[15px] font-bold px-[18px] py-[9px] rounded-[8px] border-2 border-gold transition hover:bg-offwhite min-h-[44px] whitespace-nowrap shrink-0",
   white:
     "inline-flex items-center gap-2 bg-white text-teal text-[16px] font-extrabold px-7 py-[14px] rounded-[10px] border-0 transition hover:-translate-y-0.5 min-h-[44px]",
   "ghost-dark":

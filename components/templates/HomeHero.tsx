@@ -1,5 +1,6 @@
 "use client";
 import { ButtonLink } from "@/components/ui/Button";
+import { PhoneIcon } from "@/components/ui/PhoneIcon";
 import { phoneTel } from "@/lib/config/site";
 import { useBookingModal } from "@/components/booking/BookingModalProvider";
 import { HeroFunnel } from "../booking/HeroFunnel";
@@ -130,17 +131,19 @@ export function HomeHero({ reviewStats }: HomeHeroProps) {
                   <path d="M3 9h12M10 4l5 5-5 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
               </button>
-              <ButtonLink variant="ghost-dark" href={phoneTel}>
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden>
-                  <path
-                    d="M2.5 2.5h4.5l1.8 4-2.4 1.4C7.7 9.8 8.2 10.3 9.1 11.1s1.3 1.4 3.1 2.6l1.4-2.4 4 1.8V17c-7.7 0-15-7.3-15-15z"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+              <a
+                href={phoneTel}
+                className="inline-flex items-center gap-2 text-white font-semibold whitespace-nowrap min-h-[44px] transition hover:bg-white/5"
+                style={{
+                  fontSize: 16,
+                  padding: "13px 22px",
+                  borderRadius: 11,
+                  border: "2px solid var(--color-gold)",
+                }}
+              >
+                <PhoneIcon />
                 Call Now — Free Quote
-              </ButtonLink>
+              </a>
             </div>
 
             <ul

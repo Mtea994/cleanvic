@@ -350,6 +350,25 @@
 .hero-grid-2.align-end { align-items: end; }
 .hero-grid-2.align-center { align-items: center; }
 
+/* ── Phone icon ring animation (used in nav call button) ── */
+@keyframes phoneRing {
+  0%, 55%, 100% { transform: rotate(0deg); }
+  60%  { transform: rotate(-14deg); }
+  70%  { transform: rotate(14deg); }
+  75%  { transform: rotate(-9deg); }
+  80%  { transform: rotate(9deg); }
+  88%  { transform: rotate(0deg); }
+}
+.phone-ring {
+  display: inline-flex;
+  animation: phoneRing 3s ease-in-out infinite;
+  transform-origin: center center;
+  overflow: visible;
+}
+@media (prefers-reduced-motion: reduce) {
+  .phone-ring { animation: none; }
+}
+
 /* ── Mobile collapses ── */
 @media (max-width: 1024px) {
   .hero-grid-2 { grid-template-columns: 1fr; gap: 40px; }
