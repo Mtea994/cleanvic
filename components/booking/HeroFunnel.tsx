@@ -455,8 +455,8 @@ export function HeroFunnel({ reviewStats }: HomeHeroProps) {
                     <div
                         className="absolute whitespace-nowrap"
                         style={{
-                            right: -16,
-                            bottom: 24,
+                            right: 113,
+                            bottom: -18,
                             background: "var(--color-gold)",
                             color: "var(--color-navy)",
                             fontSize: 12,
