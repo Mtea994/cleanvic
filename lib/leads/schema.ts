@@ -22,10 +22,18 @@ function isValidAuPhone(raw: string): boolean {
   return false;
 }
 
+// Always interpret "today" in Australia/Melbourne (the business's timezone),
+// regardless of whether this runs on the client or on a UTC server. Using
+// `toISOString()` would silently shift the date by a day for any client whose
+// local midnight crosses the UTC boundary.
 const todayIso = (): string => {
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-  return today.toISOString().slice(0, 10);
+  const fmt = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "Australia/Melbourne",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  });
+  return fmt.format(new Date());
 };
 
 export const leadSchema = z.object({
