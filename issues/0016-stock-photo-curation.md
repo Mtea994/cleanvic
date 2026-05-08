@@ -1,6 +1,6 @@
 # 0016 — Stock photo curation
 
-**Status:** needs-triage
+**Status:** done
 **Type:** content
 **Depends on:** —
 **Blocks:** 0007 (visual completeness only — page templates can ship with placeholders if this lags)

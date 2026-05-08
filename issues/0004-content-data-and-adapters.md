@@ -1,6 +1,6 @@
 # 0004 — Content data model & adapter layer
 
-**Status:** needs-triage
+**Status:** done
 **Type:** core
 **Depends on:** 0001
 **Blocks:** 0005, 0006, 0007, 0010, 0013, 0014

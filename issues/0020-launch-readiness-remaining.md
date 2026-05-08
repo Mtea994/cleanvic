@@ -1,6 +1,6 @@
 # 0020 — Launch readiness: remaining items from 0019
 
-**Status:** ready
+**Status:** in-progress (code shipped 2026-05-08; ops + validation pending)
 **Type:** ops + small code change
 **Depends on:** 0019 (parent), 0013, 0014, 0009
 **Blocks:** —
@@ -15,7 +15,7 @@ Items reconciled with 0019 on 2026-05-08. The DNS, GSC, Resend domain verificati
 
 ### Code changes
 
-- [ ] **OG image declarations upgraded to objects with `width`/`height`/`alt`** at four locations:
+- [x] **OG image declarations upgraded to objects with `width`/`height`/`alt`** at four locations:
   - `app/layout.tsx:38` — sitewide default
   - `app/[slug]/page.tsx:52` — service override
   - `app/[slug]/page.tsx:68` — location override
@@ -32,14 +32,14 @@ Items reconciled with 0019 on 2026-05-08. The DNS, GSC, Resend domain verificati
   }]
   ```
 
-- [ ] **IndexNow integration shipped.**
+- [x] **IndexNow integration shipped.**
   - New module: `lib/indexnow/` exposing a pure `pingIndexNow(urls, key, host)` function — takes a list of URLs, returns a structured success/failure result.
   - New API route at `app/api/indexnow/route.ts` that reads sitemap URLs (via the same content adapters used by `app/sitemap.ts`) and calls the adapter. Protected by a shared secret (`INDEXNOW_TRIGGER_SECRET` env var) checked against an `Authorization` header.
   - Vercel deploy hook configured to POST to that route on production deploys only.
   - IndexNow key file (random 32-char hex) committed to `public/<key>.txt` with the matching key value.
   - Adapter unit tests with mocked `fetch` covering each documented IndexNow response code (200, 202, 400, 403, 422, 429). Prior art: `lib/seo/__tests__/jsonld.test.ts`.
 
-- [ ] **Doc cleanup: align Resend env-var naming.**
+- [x] **Doc cleanup: align Resend env-var naming.**
   - Code uses `RESEND_FROM` (`app/api/leads/route.ts:7-8`); add it to `.env.example`.
   - Update README/research notes to reference `RESEND_FROM` consistently.
 

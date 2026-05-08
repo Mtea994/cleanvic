@@ -49,7 +49,14 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
         description: s.shortDescription,
         url: `${siteUrl}/${s.slug}`,
         type: "website",
-        images: [`/og?type=service&service=${s.slug}`],
+        images: [
+          {
+            url: `/og?type=service&service=${s.slug}`,
+            width: 1200,
+            height: 630,
+            alt: `${s.name} · KleanVictoria`,
+          },
+        ],
       },
     };
   }
@@ -65,7 +72,14 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
         description: `Local cleaning services in ${l.name} (${l.postcode}, ${l.region} Melbourne).`,
         url: `${siteUrl}/${l.slug}`,
         type: "website",
-        images: [`/og?type=location&location=${l.slug}`],
+        images: [
+          {
+            url: `/og?type=location&location=${l.slug}`,
+            width: 1200,
+            height: 630,
+            alt: `Cleaning Services in ${l.name} · KleanVictoria`,
+          },
+        ],
       },
     };
   }
@@ -82,7 +96,14 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
         description: `${service.name} in ${location.name} (${location.postcode}, ${location.region} Melbourne).`,
         url: `${siteUrl}/${comboSlug}`,
         type: "website",
-        images: [`/og?type=combo&service=${service.slug}&location=${location.slug}`],
+        images: [
+          {
+            url: `/og?type=combo&service=${service.slug}&location=${location.slug}`,
+            width: 1200,
+            height: 630,
+            alt: `${service.name} in ${location.name} · KleanVictoria`,
+          },
+        ],
       },
     };
   }

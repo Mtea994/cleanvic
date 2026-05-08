@@ -35,7 +35,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_AU",
     siteName: "KleanVictoria",
-    images: ["/og-default.png"],
+    images: [
+      {
+        url: "/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "KleanVictoria · Professional Cleaning Services Melbourne",
+      },
+    ],
   },
   twitter: { card: "summary_large_image" },
   robots: isProduction

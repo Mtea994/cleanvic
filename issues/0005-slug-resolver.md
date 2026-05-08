@@ -1,6 +1,6 @@
 # 0005 — Slug resolver module + tests
 
-**Status:** needs-triage
+**Status:** done
 **Type:** core
 **Depends on:** 0004
 **Blocks:** 0006

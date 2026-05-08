@@ -37,7 +37,7 @@ Source documents:
 | 0017 | Pre-launch checklist & env-var setup | done (operational checklist in `docs/pre-launch-checklist.md`) | all |
 | 0018 | Supabase schema migration (leads table + RLS) | done | 0001 |
 | 0019 | Production launch readiness: Google indexing & OG previews | partially-done (see 0020) | 0009, 0013, 0014, 0017 |
-| 0020 | Launch readiness: remaining items from 0019 | ready | 0019 |
+| 0020 | Launch readiness: remaining items from 0019 | in-progress (code done; ops + validation pending) | 0019 |
 
 ## Suggested execution order
 

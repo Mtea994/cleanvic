@@ -1,6 +1,6 @@
 # 0014 — Open Graph image generation (next/og)
 
-**Status:** needs-triage
+**Status:** done
 **Type:** seo
 **Depends on:** 0003, 0004
 **Blocks:** —

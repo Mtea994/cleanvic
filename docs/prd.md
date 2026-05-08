@@ -256,7 +256,7 @@ The following are explicitly out of scope for this PRD and deferred to future it
 
 ### Pre-launch operational checklist (for the PR shipping this work)
 
-- Set production env vars in Vercel: `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_PHONE`, all `NEXT_PUBLIC_ADDRESS_*`, `NEXT_PUBLIC_ABN`, `NEXT_PUBLIC_REVIEW_COUNT`, `NEXT_PUBLIC_REVIEW_AVERAGE`, `LEAD_NOTIFY_EMAIL`, `RESEND_API_KEY`, `SUPABASE_*`, `NEXT_PUBLIC_GA4_ID`, `NEXT_PUBLIC_CLARITY_ID`.
+- Set production env vars in Vercel: `NEXT_PUBLIC_SITE_URL`, `NEXT_PUBLIC_PHONE`, all `NEXT_PUBLIC_ADDRESS_*`, `NEXT_PUBLIC_ABN`, `NEXT_PUBLIC_REVIEW_COUNT`, `NEXT_PUBLIC_REVIEW_AVERAGE`, `LEAD_NOTIFY_EMAIL`, `RESEND_API_KEY`, `RESEND_FROM`, `SUPABASE_*`, `NEXT_PUBLIC_GA4_ID`, `NEXT_PUBLIC_CLARITY_ID`.
 - Configure DNS for Resend domain verification.
 - Configure Google Search Console; submit sitemap.
 - Configure Google Business Profile (separate to API integration).

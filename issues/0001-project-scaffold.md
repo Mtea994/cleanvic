@@ -1,6 +1,6 @@
 # 0001 — Project scaffold (Next.js 15 + TS + Tailwind v4 + fonts)
 
-**Status:** needs-triage
+**Status:** done
 **Type:** infra
 **Depends on:** —
 **Blocks:** every other issue

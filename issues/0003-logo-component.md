@@ -1,6 +1,6 @@
 # 0003 — Logo component (SVG mark + wordmark + lockup)
 
-**Status:** needs-triage
+**Status:** done
 **Type:** ui
 **Depends on:** 0001
 **Blocks:** 0014

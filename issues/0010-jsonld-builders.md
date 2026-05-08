@@ -1,6 +1,6 @@
 # 0010 — JSON-LD builders module + tests
 
-**Status:** needs-triage
+**Status:** done
 **Type:** seo + core
 **Depends on:** 0004, 0011, 0012
 **Blocks:** 0013

@@ -1,6 +1,6 @@
 # 0008 — Booking modal + form (RHF + Zod)
 
-**Status:** needs-triage
+**Status:** done
 **Type:** ui + core
 **Depends on:** 0002
 **Blocks:** 0007, 0009

@@ -1,6 +1,6 @@
 # 0013 — SEO infrastructure (metadata, sitemap, robots)
 
-**Status:** needs-triage
+**Status:** done
 **Type:** seo
 **Depends on:** 0004, 0010
 **Blocks:** 0014

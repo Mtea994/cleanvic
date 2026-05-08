@@ -1,6 +1,6 @@
 # 0018 — Supabase schema migration (leads table + RLS)
 
-**Status:** needs-triage
+**Status:** done
 **Type:** infra + backend
 **Depends on:** 0001
 **Blocks:** 0009

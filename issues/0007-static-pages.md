@@ -1,6 +1,6 @@
 # 0007 — Static pages (home, about, contact, services hub, locations hub)
 
-**Status:** needs-triage
+**Status:** done
 **Type:** ui
 **Depends on:** 0002, 0004, 0008
 **Blocks:** 0013

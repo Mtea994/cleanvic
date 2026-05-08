@@ -1,6 +1,6 @@
 # 0017 — Pre-launch checklist & env-var setup
 
-**Status:** needs-triage
+**Status:** done
 **Type:** ops
 **Depends on:** all
 **Blocks:** —

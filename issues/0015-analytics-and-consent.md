@@ -1,6 +1,6 @@
 # 0015 — Analytics & cookie consent
 
-**Status:** needs-triage
+**Status:** done
 **Type:** observability + compliance
 **Depends on:** 0001
 **Blocks:** —

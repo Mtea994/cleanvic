@@ -1,6 +1,6 @@
 # 0006 — Catch-all dynamic route + page templates
 
-**Status:** needs-triage
+**Status:** done
 **Type:** ui + routing
 **Depends on:** 0002, 0004, 0005
 **Blocks:** 0013, 0014

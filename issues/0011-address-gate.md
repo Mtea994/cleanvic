@@ -1,6 +1,6 @@
 # 0011 — Address-gate module + tests
 
-**Status:** needs-triage
+**Status:** done
 **Type:** seo + core
 **Depends on:** 0001
 **Blocks:** 0010

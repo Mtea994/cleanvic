@@ -1,6 +1,6 @@
 # 0002 — Design system component library
 
-**Status:** needs-triage
+**Status:** done
 **Type:** ui
 **Depends on:** 0001
 **Blocks:** 0006, 0007, 0008

@@ -331,6 +331,7 @@ Plus a hidden honeypot field.
 | `NEXT_PUBLIC_REVIEW_AVERAGE` | _(unset)_ | AggregateRating value (gates schema emission). |
 | `LEAD_NOTIFY_EMAIL` | `imtinankhurshid007@gmail.com` (dev) | Lead notification recipient. |
 | `RESEND_API_KEY` | _(required)_ | Transactional email. |
+| `RESEND_FROM` | `KleanVictoria <onboarding@resend.dev>` | Branded sender for lead notifications. Set to `KleanVictoria <hello@kleanvictoria.com.au>` after domain verification. |
 | `SUPABASE_URL` | _(required)_ | Lead store. |
 | `SUPABASE_ANON_KEY` | _(required)_ | Lead store (client). |
 | `SUPABASE_SERVICE_ROLE_KEY` | _(required)_ | Lead store (server). |

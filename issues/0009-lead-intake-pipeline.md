@@ -1,6 +1,6 @@
 # 0009 — Lead intake pipeline (Supabase + Resend) + tests
 
-**Status:** needs-triage
+**Status:** done
 **Type:** core + backend
 **Depends on:** 0008, 0018
 **Blocks:** —

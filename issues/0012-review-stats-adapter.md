@@ -1,6 +1,6 @@
 # 0012 — Review stats adapter (Google Places + env fallback) + tests
 
-**Status:** needs-triage
+**Status:** done
 **Type:** integration + core
 **Depends on:** 0001
 **Blocks:** 0010
