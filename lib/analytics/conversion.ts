@@ -1,6 +1,6 @@
 "use client";
 
-import { googleAdsConversionLabel } from "@/lib/config/site";
+import { googleAdsConversionLabel, googleAdsId } from "@/lib/config/site";
 
 declare global {
   interface Window {
@@ -17,7 +17,9 @@ interface LeadConversionPayload {
 
 export function trackLeadConversion(lead: LeadConversionPayload) {
   if (typeof window === "undefined") return;
-  if (!window.gtag || !googleAdsConversionLabel) return;
+  if (!window.gtag || !googleAdsId || !googleAdsConversionLabel) return;
+
+  const sendTo = `${googleAdsId}/${googleAdsConversionLabel}`;
 
   const firstName = lead.name?.trim().split(/\s+/)[0]?.toLowerCase();
   const postcode = lead.suburb?.match(/\d{4}/)?.[0];
@@ -38,7 +40,7 @@ export function trackLeadConversion(lead: LeadConversionPayload) {
   }
 
   window.gtag("event", "conversion", {
-    send_to: googleAdsConversionLabel,
+    send_to: sendTo,
     value: 1,
     currency: "AUD",
     transaction_id:
