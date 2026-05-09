@@ -5,6 +5,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { phone, phoneTel } from "@/lib/config/site";
 import { leadSchema, type LeadInput } from "@/lib/leads/schema";
 import type { ReviewStats } from "@/lib/reviews/getReviewStats";
+import { trackLeadConversion } from "@/lib/analytics/conversion";
 
 type Step = 1 | 2 | 3;
 
@@ -161,6 +162,11 @@ export function HeroFunnel({ reviewStats }: HomeHeroProps) {
                 return;
             }
             setStep(3);
+            trackLeadConversion({
+                phone: data.phone,
+                name: data.name,
+                suburb: data.suburb,
+            });
         } catch {
             setServerError("Network error. Please call us instead.");
         } finally {

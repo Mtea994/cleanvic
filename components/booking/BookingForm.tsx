@@ -227,7 +227,7 @@ export function BookingForm({
           placeholder="Anything else? (e.g. property size, special requests)"
           rows={3}
           {...register("notes")}
-          className={`${inputClass} resize-y min-h-[90px]`}
+          className={`${inputClass} resize-y min-h-22.5`}
         />
 
         {/* Honeypot */}
@@ -244,14 +244,14 @@ export function BookingForm({
         <button
           type="submit"
           disabled={submitting}
-          className="w-full bg-navy text-white text-[16px] font-bold rounded-[11px] py-[15px] mt-2 transition-colors flex items-center justify-center gap-2 hover:bg-teal disabled:opacity-70 disabled:cursor-not-allowed"
+          className="w-full bg-navy text-white text-[16px] font-bold rounded-[11px] py-3.75 mt-2 transition-colors flex items-center justify-center gap-2 hover:bg-teal disabled:opacity-70 disabled:cursor-not-allowed"
         >
           {submitting ? (
             "Sending..."
           ) : (
             <>
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                <path d="M3 9h12M10 5l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M3 9h12M10 5l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
               Get My Free Quote Now
             </>
