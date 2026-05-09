@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { leadSchema, leadServiceOptions, type LeadInput } from "@/lib/leads/schema";
 import { Button, ButtonLink } from "@/components/ui/Button";
 import { phone, phoneTel } from "@/lib/config/site";
+import { trackLeadConversion } from "@/lib/analytics/conversion";
 
 type Variant = "modal" | "inline";
 type Step = 1 | 2 | "success";
@@ -84,6 +85,12 @@ export function BookingForm({
         return;
       }
       setSubmitted(true);
+      trackLeadConversion({
+        email: data.email,
+        phone: data.phone,
+        name: data.name,
+        suburb: data.suburb,
+      });
     } catch {
       setServerError("Network error. Please try again or call us directly.");
     } finally {
