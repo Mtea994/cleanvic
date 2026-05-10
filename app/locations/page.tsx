@@ -54,9 +54,9 @@ export default async function LocationsHubPage() {
           </SectionDesc>
         </SectionHead>
         <div
-          className="grid gap-5"
           style={{
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            columnWidth: 280,
+            columnGap: 20,
             maxWidth: 1200,
             margin: "0 auto",
           }}
@@ -65,6 +65,12 @@ export default async function LocationsHubPage() {
             <div
               key={region}
               className="bg-white border border-border-soft rounded-[14px] overflow-hidden"
+              style={{
+                breakInside: "avoid",
+                marginBottom: 20,
+                display: "inline-block",
+                width: "100%",
+              }}
             >
               <div
                 style={{
