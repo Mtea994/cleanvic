@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const CONSENT_KEY = "kv:cc:analytics";
@@ -40,9 +41,16 @@ export function ConsentBanner() {
       style={{ padding: 18 }}
     >
       <p style={{ fontSize: 14, lineHeight: 1.6, marginBottom: 12 }}>
-        We use essential cookies to run the site. With your permission, we&rsquo;d also like
-        to use analytics cookies (Google Analytics, Microsoft Clarity) to understand how
-        visitors use our site.
+        We use cookies to run this site, improve your experience, and measure our
+        marketing. See our{" "}
+        <Link href="/privacy" className="text-teal underline">
+          Privacy Policy
+        </Link>{" "}
+        and{" "}
+        <Link href="/terms" className="text-teal underline">
+          Terms
+        </Link>
+        .
       </p>
       <div className="flex gap-2">
         <button

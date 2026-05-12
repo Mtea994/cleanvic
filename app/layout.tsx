@@ -7,6 +7,7 @@ import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { AnnounceBar } from "@/components/layout/AnnounceBar";
 import { StickyMobileCta } from "@/components/layout/StickyMobileCta";
+import { AnalyticsRouteChange } from "@/components/analytics/AnalyticsRouteChange";
 import { ConsentBanner } from "@/components/analytics/ConsentBanner";
 import { SiteAnalytics } from "@/components/analytics/SiteAnalytics";
 import { LocalBusinessJsonLd } from "@/components/seo/LocalBusinessJsonLd";
@@ -88,6 +89,7 @@ export default function RootLayout({
         </BookingModalProvider>
         <LocalBusinessJsonLd />
         <SiteAnalytics />
+        <AnalyticsRouteChange />
         <ConsentBanner />
         <VercelAnalytics />
       </body>

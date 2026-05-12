@@ -26,6 +26,7 @@ export const googleAdsId =
   process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || "AW-18136121377";
 export const googleAdsConversionLabel =
   process.env.NEXT_PUBLIC_GOOGLE_ADS_CONVERSION_LABEL || "i12RCJ7qp6ocEKGA_cdD";
+export const fbPixelId = process.env.NEXT_PUBLIC_FB_PIXEL_ID || "";
 
 // Melbourne CBD geo coordinates for LocalBusiness schema.
 export const businessGeo = { lat: -37.8136, lng: 144.9631 };

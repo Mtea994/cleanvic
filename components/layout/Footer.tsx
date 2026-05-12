@@ -142,9 +142,11 @@ export function Footer() {
         <p className="text-white/60">
           © {year} {businessName}. All rights reserved.
         </p>
-        <ul className="flex gap-5 list-none p-0 m-0">
+        <ul className="flex gap-5 list-none p-0 m-0 flex-wrap justify-center">
           <li><Link href="/about" className="text-white/60 hover:text-white">About</Link></li>
           <li><Link href="/contact" className="text-white/60 hover:text-white">Contact</Link></li>
+          <li><Link href="/privacy" className="text-white/60 hover:text-white">Privacy</Link></li>
+          <li><Link href="/terms" className="text-white/60 hover:text-white">Terms</Link></li>
         </ul>
       </div>
     </footer>

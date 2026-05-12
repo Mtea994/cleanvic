@@ -1,37 +1,18 @@
-"use client";
-
 import Script from "next/script";
-import { useEffect, useState } from "react";
-import { clarityId, ga4Id } from "@/lib/config/site";
-
-const CONSENT_KEY = "kv:cc:analytics";
+import { clarityId, fbPixelId, ga4Id, isProduction } from "@/lib/config/site";
 
 declare global {
   interface Window {
     dataLayer?: unknown[];
     gtag?: (...args: unknown[]) => void;
     clarity?: (...args: unknown[]) => void;
+    fbq?: (...args: unknown[]) => void;
+    _fbq?: unknown;
   }
 }
 
 export function SiteAnalytics() {
-  const [consented, setConsented] = useState(false);
-
-  useEffect(() => {
-    const update = () => {
-      try {
-        setConsented(localStorage.getItem(CONSENT_KEY) === "granted");
-      } catch {
-        setConsented(false);
-      }
-    };
-    update();
-    const handler = () => update();
-    window.addEventListener("kv:consent-change", handler);
-    return () => window.removeEventListener("kv:consent-change", handler);
-  }, []);
-
-  if (!consented) return null;
+  if (!isProduction) return null;
 
   return (
     <>
@@ -63,6 +44,34 @@ export function SiteAnalytics() {
             })(window, document, "clarity", "script", "${clarityId}");
           `}
         </Script>
+      )}
+      {fbPixelId && (
+        <>
+          <Script id="fb-pixel-init" strategy="afterInteractive">
+            {`
+              !function(f,b,e,v,n,t,s)
+              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+              n.queue=[];t=b.createElement(e);t.async=!0;
+              t.src=v;s=b.getElementsByTagName(e)[0];
+              s.parentNode.insertBefore(t,s)}(window, document,'script',
+              'https://connect.facebook.net/en_US/fbevents.js');
+              fbq('init', '${fbPixelId}');
+              fbq('track', 'PageView');
+            `}
+          </Script>
+          <noscript>
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              height="1"
+              width="1"
+              style={{ display: "none" }}
+              alt=""
+              src={`https://www.facebook.com/tr?id=${fbPixelId}&ev=PageView&noscript=1`}
+            />
+          </noscript>
+        </>
       )}
     </>
   );
