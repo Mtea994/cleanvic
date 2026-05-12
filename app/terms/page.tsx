@@ -7,7 +7,7 @@ import {
   SectionTitle,
 } from "@/components/ui/Section";
 import { CtaBand } from "@/components/ui/CtaBand";
-import { businessName, leadNotifyEmail } from "@/lib/config/site";
+import { businessName, contactEmail } from "@/lib/config/site";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions",
@@ -45,7 +45,7 @@ const sections = [
   {
     label: "Section 6",
     title: "Contact Us",
-    body: `Questions about these terms? Contact us at ${leadNotifyEmail} and we'll respond within one business day.`,
+    body: `Questions about these terms? Contact us at ${contactEmail} and we'll respond within one business day.`,
   },
 ];
 

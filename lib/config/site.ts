@@ -10,6 +10,8 @@ export const phoneTel = `tel:${phone.replace(/[^0-9+]/g, "")}`;
 export const leadNotifyEmail =
   process.env.LEAD_NOTIFY_EMAIL || "contact@kleanvictoria.com.au";
 
+export const contactEmail = process.env.CONTACT_EMAIL || "contact@kleanvictoria.com.au";
+
 export const address = {
   street: process.env.NEXT_PUBLIC_ADDRESS_STREET || "123 Placeholder St",
   suburb: process.env.NEXT_PUBLIC_ADDRESS_SUBURB || "Melbourne",

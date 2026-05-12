@@ -7,7 +7,7 @@ import {
   SectionTitle,
 } from "@/components/ui/Section";
 import { CtaBand } from "@/components/ui/CtaBand";
-import { leadNotifyEmail } from "@/lib/config/site";
+import { contactEmail } from "@/lib/config/site";
 
 export const metadata: Metadata = {
   title: "Privacy Policy",
@@ -45,7 +45,7 @@ const sections = [
   {
     label: "Section 6",
     title: "Contact Us",
-    body: `For privacy enquiries or to exercise any of the rights above, contact us at ${leadNotifyEmail}. We respond to privacy requests within a reasonable timeframe.`,
+    body: `For privacy enquiries or to exercise any of the rights above, contact us at ${contactEmail}. We respond to privacy requests within a reasonable timeframe.`,
   },
 ];
 
