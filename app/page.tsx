@@ -18,7 +18,7 @@ import type { Region } from "@/lib/content/types";
 export const metadata: Metadata = {
   title: "Professional Cleaning Services Melbourne",
   description:
-    "Carpet, house, end-of-lease, commercial, window and deep cleaning across Melbourne. Police-checked, insured, satisfaction guaranteed. Get a free quote.",
+    "Carpet, house, end-of-lease, commercial, chimney and window cleaning across Melbourne. Police-checked, insured, satisfaction guaranteed. Get a free quote.",
   alternates: { canonical: "/" },
 };
 

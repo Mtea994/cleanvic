@@ -55,6 +55,23 @@ describe("resolveSlug", () => {
     }
   });
 
+  it("resolves the chimney-cleaning service and its combos", () => {
+    expect(resolveSlug("chimney-cleaning").kind).toBe("service");
+
+    const combo = resolveSlug("chimney-cleaning-richmond");
+    expect(combo.kind).toBe("combo");
+    if (combo.kind === "combo") {
+      expect(combo.service.slug).toBe("chimney-cleaning");
+      expect(combo.location.slug).toBe("richmond");
+    }
+
+    const multiWord = resolveSlug("chimney-cleaning-st-kilda");
+    expect(multiWord.kind).toBe("combo");
+    if (multiWord.kind === "combo") {
+      expect(multiWord.location.slug).toBe("st-kilda");
+    }
+  });
+
   it("uses LONGEST-match service prefix when an ambiguity is theoretically possible", () => {
     // The dataset doesn't have an example today, but the algorithm walks from
     // longest prefix → shortest. If a future service "x" and "x-y" exist with

@@ -93,6 +93,31 @@ const heroChips: { slug: LeadInput["service"]; label: string; icon: React.ReactN
             </svg>
         ),
     },
+    {
+        slug: "chimney-cleaning",
+        label: "Chimney Cleaning",
+        icon: (
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                <path d="M2 14V7l5-4 5 4v7H2z" stroke="currentColor" strokeWidth="1.3" strokeLinejoin="round" />
+                <path d="M11 5.5h3V14h-3" stroke="currentColor" strokeWidth="1.2" strokeLinejoin="round" />
+                <path d="M10.5 5.5H15" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+                <path d="M12.5 4c0-1 1-1.3 1-2.2" stroke="currentColor" strokeWidth="1" strokeLinecap="round" opacity="0.6" />
+                <rect x="5" y="9.5" width="4" height="4.5" rx="0.6" stroke="currentColor" strokeWidth="1.1" opacity="0.7" />
+            </svg>
+        ),
+    },
+    {
+        slug: "oven-cleaning",
+        label: "Oven Cleaning",
+        icon: (
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden>
+                <rect x="2" y="3" width="12" height="10" rx="1.2" stroke="currentColor" strokeWidth="1.3" />
+                <rect x="4.5" y="6.5" width="7" height="4.5" rx="0.8" stroke="currentColor" strokeWidth="1.1" />
+                <circle cx="4.8" cy="4.8" r="0.7" fill="currentColor" opacity="0.6" />
+                <circle cx="7.2" cy="4.8" r="0.7" fill="currentColor" opacity="0.6" />
+            </svg>
+        ),
+    },
 ];
 
 

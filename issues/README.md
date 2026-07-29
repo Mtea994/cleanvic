@@ -39,6 +39,7 @@ Source documents:
 | 0019 | Production launch readiness: Google indexing & OG previews | partially-done (see 0020) | 0009, 0013, 0014, 0017 |
 | 0020 | Launch readiness: remaining items from 0019 | in-progress (code done; ops + validation pending) | 0019 |
 | 0021 | Facebook Pixel, analytics ungating, and legal stub pages | needs-triage | 0015 |
+| 0022 | Chimney cleaning service line | in-progress (code done; photo assets pending) | 0004 |
 
 ## Suggested execution order
 

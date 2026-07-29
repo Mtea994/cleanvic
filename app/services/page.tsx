@@ -17,7 +17,7 @@ import { getReviewStats } from "@/lib/reviews/getReviewStats";
 export const metadata: Metadata = {
   title: "Cleaning Services Melbourne",
   description:
-    "All KleanVictoria cleaning services — carpet, upholstery, mattress, rug, tile and grout, deep, end-of-lease, emergency flood restoration, house, commercial, window, and oven cleaning.",
+    "All KleanVictoria cleaning services — carpet, upholstery, tile and grout, end-of-lease, chimney, house, commercial and more across Melbourne.",
   alternates: { canonical: "/services" },
 };
 
@@ -29,7 +29,7 @@ export default async function ServicesHubPage() {
       <Hero
         eyebrow="All services"
         title="Every cleaning service we offer in Melbourne."
-        description="From regular house cleans to specialist carpet steam-cleaning and end-of-lease deep cleans — pick the service you need to see what&rsquo;s included."
+        description="From regular house cleans to specialist carpet steam-cleaning, chimney sweeping, and end-of-lease deep cleans — pick the service you need to see what&rsquo;s included."
         reviewStats={reviewStats}
       />
 

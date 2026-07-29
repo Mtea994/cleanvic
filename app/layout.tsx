@@ -23,13 +23,14 @@ export const metadata: Metadata = {
     template: "%s · KleanVictoria",
   },
   description:
-    "Melbourne's residential and commercial cleaning specialists. Carpet, house, end-of-lease, commercial, window and deep cleaning. Police-checked, insured, satisfaction guaranteed.",
+    "Melbourne's residential and commercial cleaning specialists. Carpet, house, end-of-lease, commercial, chimney and window cleaning. Police-checked, insured, satisfaction guaranteed.",
   keywords: [
     "cleaning services Melbourne",
     "carpet cleaning Melbourne",
     "house cleaning Melbourne",
     "commercial cleaning Melbourne",
     "end of lease cleaning Melbourne",
+    "chimney cleaning Melbourne",
   ],
   alternates: { canonical: "/" },
   openGraph: {

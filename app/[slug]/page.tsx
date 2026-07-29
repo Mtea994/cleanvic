@@ -65,7 +65,7 @@ export async function generateMetadata({ params }: RouteProps): Promise<Metadata
     const l = resolution.location;
     return {
       title: `Cleaning Services in ${l.name}`,
-      description: `Professional cleaning services in ${l.name} (${l.postcode}). Carpet, house, end-of-lease, commercial — police-checked, insured, satisfaction guaranteed.`,
+      description: `Professional cleaning services in ${l.name} (${l.postcode}). Carpet, house, end-of-lease, chimney, commercial — police-checked, insured, satisfaction guaranteed.`,
       alternates: { canonical: `/${l.slug}` },
       openGraph: {
         title: `Cleaning in ${l.name} · KleanVictoria`,

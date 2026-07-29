@@ -70,8 +70,9 @@ export default function AboutPage() {
           <p className="text-muted" style={{ fontSize: 17, lineHeight: 1.75, marginTop: 12 }}>
             Today we cover 120 Melbourne suburbs across inner and middle metro,
             handling everything from regular house cleans to commercial offices,
-            end-of-lease deep cleans, carpet steam-cleaning, and emergency
-            flood restoration. Same friendly team, same standards, every job.
+            end-of-lease deep cleans, carpet steam-cleaning, chimney sweeping,
+            and emergency flood restoration. Same friendly team, same standards,
+            every job.
           </p>
         </div>
       </Section>

@@ -35,6 +35,8 @@ target dimensions for the source file committed here; Next.js
 | `hero-oven-cleaning.jpg` | Oven hero | 1920×1080 | JPG/WebP q80 | Unsplash |
 | `hero-rug-cleaning.jpg` | Rug hero | 1920×1080 | JPG/WebP q80 | Unsplash |
 | `hero-water-damage.jpg` | Water-damage hero | 1920×1080 | JPG/WebP q80 | Unsplash |
+| `hero-chimney-cleaning.jpg` | **NOT YET SOURCED** — chimney hero. `chimney-cleaning` currently reuses `hero-house-cleaning.jpg` as an interim; swap the `heroImage` path in `lib/content/data/services.ts` once this lands. See issue 0022. | 1920×1080 | JPG/WebP q80 | Unsplash |
+| `before-after-chimney-1.jpg` / `-2.jpg` | **NOT YET SOURCED** — soot/creosote before/after pair. Until these land, the chimney page falls through to the carpet pair in `ServiceBeforeAfter.tsx`. See issue 0022. | 1200×1200 (or 1200×900) | JPG/WebP q80 | Pexels |
 | `about-atmosphere.jpg` | About page hero | 1920×1080 | JPG/WebP q80 | Unsplash |
 | `before-after-carpet-1.jpg` | Carpet before/after pair 1 | 1200×1200 (or 1200×900) | JPG/WebP q80 | Pexels |
 | `before-after-carpet-2.jpg` | Carpet before/after pair 2 | 1200×1200 (or 1200×900) | JPG/WebP q80 | Pexels |

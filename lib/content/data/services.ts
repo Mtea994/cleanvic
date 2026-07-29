@@ -238,6 +238,64 @@ export const services: Service[] = [
     priceFrom: null,
   },
   {
+    slug: "chimney-cleaning",
+    name: "Chimney Cleaning",
+    shortDescription:
+      "Chimney sweeping for open fireplaces, wood heaters, and flues — sealed, HEPA-vacuumed, no soot in your room.",
+    longDescription:
+      "Our chimney sweeps clear the creosote, soot, and debris that build up in a flue over a season of burning — the build-up behind most chimney fires and poor draw. We work on open fireplaces, wood heaters and combustion stoves, pellet heaters, wood-fired pizza ovens, and the flues on gas log fireplaces, space heaters, and wall furnaces. Every job is sealed at the opening and swept under a HEPA vacuum, so the soot leaves in our machine rather than settling on your carpet. We sweep from inside the appliance or down from the roof, whichever the flue calls for, and finish with a draw test and a plain-English report on anything we found.",
+    whatsIncluded: [
+      "Full flue sweep — rods and brushes, creosote, soot, and debris removed",
+      "Firebox, baffle plates, flue damper, and glass cleaned",
+      "Opening sealed and swept under HEPA vacuum — no soot in the room",
+      "Unoccupied bird and possum nest removal, plus debris clearing",
+      "Bird/possum guard cowl or rain cap supplied and fitted on request",
+      "Draw test and written condition report on the flue and appliance",
+    ],
+    process: [
+      "Inspect the appliance and flue with you, and agree whether we sweep from inside or from the roof",
+      "Seal the opening, lay drop sheets, and set the HEPA vacuum running under negative pressure",
+      "Sweep the full length of the flue with rods and brushes sized to your liner",
+      "Vacuum out the firebox, baffles, and damper, then clean the glass",
+      "Draw test, walk you through the condition report, and fit a cowl if one is needed",
+    ],
+    faq: [
+      {
+        q: "How often should a chimney be swept?",
+        a: "Once a year for anything you burn regularly — or after roughly a tonne of wood, whichever comes first. Heavy winter users and anyone burning unseasoned wood should sweep before every season, since wet wood lays down creosote far faster.",
+      },
+      {
+        q: "Will you make a mess in my living room?",
+        a: "No. We seal the fireplace opening, lay drop sheets over the hearth and surrounds, and sweep with a HEPA vacuum running so the flue is under negative pressure. The soot goes into our machine, not into your room.",
+      },
+      {
+        q: "Do you do wood heaters and combustion stoves, or just open fireplaces?",
+        a: "Both. Open fireplaces and masonry flues, freestanding and inbuilt wood heaters, combustion stoves, pellet heaters, and backyard wood-fired pizza ovens. Wood heaters need the baffle plates pulled to sweep properly, which is included.",
+      },
+      {
+        q: "Can you clean a gas log fireplace or wall furnace?",
+        a: "We clean the flue, firebox, and glass on gas log fireplaces, gas space heaters, and wall furnaces. Servicing the burner or any gas fitting itself is licensed gas work in Victoria — we refer that to our licensed gasfitter rather than touching it ourselves.",
+      },
+      {
+        q: "There's a bird or a possum in my chimney — can you remove it?",
+        a: "We remove unoccupied nests and debris, and fit a guard cowl so it doesn't happen again. If the animal is still living in the flue, Victorian wildlife law requires an authorised wildlife controller to remove it — we'll put you onto one, then come back and sweep and cap the flue.",
+      },
+      {
+        q: "How long does a chimney sweep take?",
+        a: "A standard single-flue sweep runs 45–90 minutes. Heavy creosote build-up, nest removal, or a two-storey roof-access job can push it past two hours. We'll tell you on inspection before we start.",
+      },
+      {
+        q: "Is there any point sweeping in summer?",
+        a: "Plenty — it's the easiest time to book, and a flue left full of creosote over summer draws moisture and starts corroding the liner. Sweeping in the off-season also means you're not waiting for an appointment on the first cold snap.",
+      },
+    ],
+    // TODO: swap to /images/hero-chimney-cleaning.jpg once the real photo lands
+    // (tracked in issue 0022 and public/images/CREDITS.md).
+    heroImage: "/images/hero-house-cleaning.jpg",
+    iconName: "chimney",
+    priceFrom: null,
+  },
+  {
     slug: "emergency-flood-restoration",
     name: "Emergency Flood Restoration",
     shortDescription:

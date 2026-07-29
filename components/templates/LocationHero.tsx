@@ -42,9 +42,9 @@ export function LocationHero({ location }: { location: Location }) {
 
         <p className="hero-desc">
           Police-checked, insured local cleaners in {location.name}{" "}
-          ({location.postcode}). From carpet steam-cleaning to end-of-lease deep
-          cleans, we get it done right — same-day quotes, satisfaction
-          guaranteed.
+          ({location.postcode}). From carpet steam-cleaning to chimney sweeps
+          and end-of-lease deep cleans, we get it done right — same-day quotes,
+          satisfaction guaranteed.
         </p>
 
         <div className="hero-actions">

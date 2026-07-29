@@ -103,6 +103,16 @@ export function ServiceIcon({
           <path d="M34 52a6 6 0 008-4" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" opacity="0.6" />
         </svg>
       );
+    case "chimney":
+      return (
+        <svg {...common}>
+          <path d="M14 62V34l18-13 18 13v28H14z" stroke="currentColor" strokeWidth="2" strokeLinejoin="round" />
+          <path d="M52 26h12v36H52" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />
+          <path d="M50 26h16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <path d="M58 22c0-3 3-4 3-7M64 22c0-2.5 2.5-3.5 2.5-6" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" opacity="0.55" />
+          <rect x="24" y="46" width="16" height="16" rx="2" stroke="currentColor" strokeWidth="1.5" opacity="0.7" />
+        </svg>
+      );
     case "lease":
       return (
         <svg {...common}>
